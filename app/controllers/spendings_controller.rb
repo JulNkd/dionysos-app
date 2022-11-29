@@ -6,6 +6,14 @@ class SpendingsController < ApplicationController
   end
 
   def create
+    @spending = Spending.new(spending_params)
+    @spending.event = @event
+    #seulement si event.budget.budget_restant > spendings params
+    if @spending.save
+      redirect_to event_spendings_path, status: :see_other
+    else
+      render :new, status: :unprocessable_entity
+    end
   end
 
   def index
@@ -16,5 +24,9 @@ class SpendingsController < ApplicationController
 
   def set_event
     @event = Event.find(params[:event_id])
+  end
+
+  def spending_params
+    params.require(:spending).permit(:amount, :category, :date)
   end
 end

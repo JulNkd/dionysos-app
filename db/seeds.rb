@@ -10,8 +10,8 @@ require "faker"
 Invitation.destroy_all
 User.destroy_all
 Spending.destroy_all
-Budget.destroy_all
 Event.destroy_all
+Budget.destroy_all
 
 user = User.new(first_name: "Joy",
                 last_name: "Klasen",
@@ -23,12 +23,12 @@ user = User.new(first_name: "Joy",
 user.save!
 
 event_first = Event.new(start_date: DateTime.new(2022,2,3,4,5,6),
-                  end_date: DateTime.new(2023,2,3,4,5,6),
-                  category: "Wedding",
-                  description: "super mariage de ouf de Joy",
-                  address: "Place Castellane",
-                  album: "Mon album photo",
-                  title: "Mariage de Joy KLSN")
+                        end_date: DateTime.new(2023,2,3,4,5,6),
+                        category: "Wedding",
+                        description: "super mariage de ouf de Joy",
+                        address: "Place Castellane",
+                        album: "Mon album photo",
+                        title: "Mariage de Joy KLSN")
 event_first.save!
 
 invitation = Invitation.new(user_id: user.id,
@@ -38,12 +38,13 @@ invitation = Invitation.new(user_id: user.id,
                             comment: "J'ai trop hâte d'être invité à ton mariage Joy xD ^^")
 invitation.save!
 
-budget_first = Budget.new(total_budget: 0.0)
+budget_first = Budget.new(initial_budget: 1000,
+                          remaining_budget: 1000,
+                          event: event_first)
 budget_first.save!
 
 spending = Spending.new(amount: 30.0,
                         category: "champagne",
                         date: Date.new(2022, 9, 5),
-                        event: event_first,
-                        budget: budget_first)
+                        event: event_first)
 spending.save!
