@@ -1,0 +1,9 @@
+<div class="container">
+  <h2><%= @event.title %></h2>
+  <p><%= @event.address %></p>
+  <p><%= @event.category %></p>
+  <p><%= @event.description %></p>
+  <%= cl_image_tag @event.album.key, width: 400, height: 300, crop: :fill %>
+  <p>Date de début : <%= @event.start_date %></p>
+  <p>Date de fin : <%= @event.end_date %></p>
+</div>

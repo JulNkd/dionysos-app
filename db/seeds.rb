@@ -43,6 +43,7 @@ budget_first = Budget.new(initial_budget: 1000,
                           event: event_first)
 budget_first.save!
 
+
 spending = Spending.new(amount: 30.0,
                         category: "champagne",
                         date: Date.new(2022, 9, 5),

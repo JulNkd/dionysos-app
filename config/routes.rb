@@ -5,7 +5,6 @@ Rails.application.routes.draw do
   resources :events, only: %i[show new create] do
     resources :spendings, only: %i[new create index]
   end
-
   # Defines the root path route ("/")
   # root "articles#index"
 end
