@@ -5,5 +5,5 @@ Rails.application.routes.draw do
 
   # Defines the root path route ("/")
   # root "articles#index"
-  resources :locations, only: %i[index new create]
+  resources :invitations, except: :destroy
 end
