@@ -5,7 +5,6 @@ class CreateEvents < ActiveRecord::Migration[7.0]
       t.datetime :end_date
       t.string :category
       t.text :description
-      t.references :location, null: false, foreign_key: true
       t.string :address
       t.string :album
       t.string :title

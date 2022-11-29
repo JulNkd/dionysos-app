@@ -21,15 +21,8 @@ user = User.new(first_name: "Joy",
                 admin: true)
 user.save!
 
-location = Location.new(address: "Vieux Port Marseille",
-                        capacity: 40,
-                        price: 250.5,
-                        availabity: true,
-                        visibility: true,)
-location.save!
-
-event = Event.new(start_date: 2001-02-04%21:35:06+09:00,
-                  end_date: 2001-02-04%16:05:06+03:30,
+event = Event.new(start_date: DateTime.new(2022,2,3,4,5,6),
+                  end_date: DateTime.new(2023,2,3,4,5,6),
                   category: "Wedding",
                   description: "super mariage de ouf de Joy",
                   address: "Place Castellane",
@@ -38,4 +31,11 @@ event = Event.new(start_date: 2001-02-04%21:35:06+09:00,
                 )
 event.save!
 
-invitation = Invitation.new()
+# invitation = Invitation.new(user_id: user,
+#                             event_id:
+#                             status: true,
+#                             partner: true,
+#                             comment: "blablabla",
+#                           )
+
+# invitation.save!
