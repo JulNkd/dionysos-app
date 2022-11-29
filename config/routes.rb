@@ -4,6 +4,7 @@ Rails.application.routes.draw do
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
   resources :events, only: %i[show new create] do
     resources :invitations, except: :destroy
+    resources :budgets, only: %i[new create show]
   end
   # Defines the root path route ("/")
   # root "articles#index"
