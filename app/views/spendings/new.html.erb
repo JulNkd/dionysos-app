@@ -1,0 +1,7 @@
+<h1>new spending</h1>
+<%= simple_form_for [@event, @spending] do |f| %>
+    <%= f.input :amount %>
+    <%= f.input :category %>
+    <%= f.input :date %>
+    <%= f.submit %>
+  <% end %>
