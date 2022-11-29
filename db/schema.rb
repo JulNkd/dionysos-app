@@ -25,13 +25,11 @@ ActiveRecord::Schema[7.0].define(version: 2022_11_29_092819) do
     t.datetime "end_date"
     t.string "category"
     t.text "description"
-    t.bigint "location_id", null: false
     t.string "address"
     t.string "album"
     t.string "title"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["location_id"], name: "index_events_on_location_id"
   end
 
   create_table "invitations", force: :cascade do |t|
@@ -44,16 +42,6 @@ ActiveRecord::Schema[7.0].define(version: 2022_11_29_092819) do
     t.datetime "updated_at", null: false
     t.index ["event_id"], name: "index_invitations_on_event_id"
     t.index ["user_id"], name: "index_invitations_on_user_id"
-  end
-
-  create_table "locations", force: :cascade do |t|
-    t.string "address"
-    t.integer "capacity"
-    t.float "price"
-    t.boolean "availabity"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.boolean "visibility"
   end
 
   create_table "spendings", force: :cascade do |t|
@@ -85,7 +73,6 @@ ActiveRecord::Schema[7.0].define(version: 2022_11_29_092819) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
-  add_foreign_key "events", "locations"
   add_foreign_key "invitations", "events"
   add_foreign_key "invitations", "users"
   add_foreign_key "spendings", "budgets"
