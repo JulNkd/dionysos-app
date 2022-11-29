@@ -7,10 +7,11 @@
 #   Character.create(name: "Luke", movie: movies.first)
 require "faker"
 
+Invitation.destroy_all
 User.destroy_all
 Event.destroy_all
-Invitation.destroy_all
-Spending.destroy
+Budget.destroy_all
+Spending.destroy_all
 
 user = User.new(first_name: "Joy",
                 last_name: "Klasen",
@@ -36,3 +37,13 @@ invitation = Invitation.new(user_id: user.id,
                             partner: true,
                             comment: "J'ai trop hâte d'être invité à ton mariage Joy xD ^^")
 invitation.save!
+
+budget = Budget.new(total_budget: 0.0)
+budget.save!
+
+spending = Spending.new(amount: 30.0,
+                        category: "champagne",
+                        date: Date.new(2022, 9, 5),
+                        event_id: event.id,
+                        budget_id: budget.id)
+spending.save!
