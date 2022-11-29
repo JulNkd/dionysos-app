@@ -22,28 +22,28 @@ user = User.new(first_name: "Joy",
                 admin: true)
 user.save!
 
-event = Event.new(start_date: DateTime.new(2022,2,3,4,5,6),
+event_first = Event.new(start_date: DateTime.new(2022,2,3,4,5,6),
                   end_date: DateTime.new(2023,2,3,4,5,6),
                   category: "Wedding",
                   description: "super mariage de ouf de Joy",
                   address: "Place Castellane",
                   album: "Mon album photo",
                   title: "Mariage de Joy KLSN")
-event.save!
+event_first.save!
 
 invitation = Invitation.new(user_id: user.id,
-                            event_id: event.id,
+                            event: event_first,
                             status: true,
                             partner: true,
                             comment: "J'ai trop hâte d'être invité à ton mariage Joy xD ^^")
 invitation.save!
 
-budget = Budget.new(total_budget: 0.0)
-budget.save!
+budget_first = Budget.new(total_budget: 0.0)
+budget_first.save!
 
 spending = Spending.new(amount: 30.0,
                         category: "champagne",
                         date: Date.new(2022, 9, 5),
-                        event_id: event.id,
-                        budget_id: budget.id)
+                        event: event_first,
+                        budget: budget_first)
 spending.save!
