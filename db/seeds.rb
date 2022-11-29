@@ -8,7 +8,6 @@
 require "faker"
 
 User.destroy_all
-Location.destroy_all
 Event.destroy_all
 Invitation.destroy_all
 
