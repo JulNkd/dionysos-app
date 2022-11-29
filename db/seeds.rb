@@ -6,12 +6,11 @@
 #   movies = Movie.create([{ name: "Star Wars" }, { name: "Lord of the Rings" }])
 #   Character.create(name: "Luke", movie: movies.first)
 require "faker"
-
-User.destroy_all
-Location.destroy_all
-Event.destroy_all
 Invitation.destroy_all
-
+User.destroy_all
+Spending.destroy_all
+Budget.destroy_all
+Event.destroy_all
 user = User.new(first_name: "Joy",
                 last_name: "Klasen",
                 password: "azerty",
@@ -20,22 +19,25 @@ user = User.new(first_name: "Joy",
                 address: "21 rue Haxo",
                 admin: true)
 user.save!
-
 event = Event.new(start_date: DateTime.new(2022,2,3,4,5,6),
                   end_date: DateTime.new(2023,2,3,4,5,6),
                   category: "Wedding",
                   description: "super mariage de ouf de Joy",
                   address: "Place Castellane",
                   album: "Mon album photo",
-                  title: "Mariage de Joy KLSN"
-                )
+                  title: "Mariage de Joy KLSN")
 event.save!
-
-# invitation = Invitation.new(user_id: user,
-#                             event_id:
-#                             status: true,
-#                             partner: true,
-#                             comment: "blablabla",
-#                           )
-
-# invitation.save!
+invitation = Invitation.new(user_id: user.id,
+                            event_id: event.id,
+                            status: true,
+                            partner: true,
+                            comment: "J'ai trop hâte d'être invité à ton mariage Joy xD ^^")
+invitation.save!
+budget = Budget.new(total_budget: 0.0)
+budget.save!
+spending = Spending.new(amount: 30.0,
+                        category: "champagne",
+                        date: Date.new(2022, 9, 5),
+                        event_id: event.id,
+                        budget_id: budget.id)
+spending.save!
