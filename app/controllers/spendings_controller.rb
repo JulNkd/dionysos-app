@@ -1,17 +1,19 @@
 class SpendingsController < ApplicationController
-  before_action :set_event, only: %i[new create]
+  before_action :set_event, only: %i[new create show]
 
   def new
     @spending = Spending.new
   end
 
   def create
-  end
-
-  def edit
-  end
-
-  def update
+    @spending = Spending.new(spending_params)
+    @spending.event = @event
+    #seulement si event.budget.budget_restant > spendings params
+    if @spending.save
+      redirect_to event_spendings_path, status: :see_other
+    else
+      render :new, status: :unprocessable_entity
+    end
   end
 
   def index
