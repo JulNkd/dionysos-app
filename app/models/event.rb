@@ -3,5 +3,5 @@ class Event < ApplicationRecord
   has_many :invitations
   has_many_attached :photos
 
-  has_many :budgets
+  has_one :budget
 end
