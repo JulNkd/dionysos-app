@@ -5,7 +5,6 @@ class CreateSpendings < ActiveRecord::Migration[7.0]
       t.string :category
       t.date :date
       t.references :event, null: false, foreign_key: true
-      t.references :budget, null: false, foreign_key: true
 
       t.timestamps
     end
