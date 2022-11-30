@@ -8,7 +8,7 @@ class SpendingsController < ApplicationController
   def create
     @spending = Spending.new(spending_params)
     @spending.event = @event
-    #seulement si event.budget.budget_restant > spendings params
+    # seulement si event.budget.budget_restant > spendings params
     if @spending.save
       redirect_to event_spendings_path, status: :see_other
     else
