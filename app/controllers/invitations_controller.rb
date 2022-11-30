@@ -1,15 +1,16 @@
 class InvitationsController < ApplicationController
   before_action :set_event
-  # before_action :set_user, except: [:index, :new, :create]
+  # before_action :set_user
 
   def index
+    @invitation.event = @event
     # trombinoscope de tous les invités
     @event.users
   end
 
   def show
     # profil de l'invité
-    @event.users.ids
+    @user = User.find(params[:user_id])
   end
 
   def new
