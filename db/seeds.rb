@@ -28,7 +28,6 @@ event_first = Event.new(start_date: DateTime.new(2022,2,3,4,5,6),
                         category: "Wedding",
                         description: "super mariage de ouf de Joy",
                         address: "Place Castellane",
-                        album: "Mon album photo",
                         title: "Mariage de Joy KLSN")
 event_first.save!
 
