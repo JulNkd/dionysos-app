@@ -13,14 +13,15 @@ Spending.destroy_all
 Event.destroy_all
 Budget.destroy_all
 
-user = User.new(first_name: "Joy",
-                last_name: "Klasen",
-                password: "azerty",
-                email: "jlksn@gmail.com",
-                phone_number: "0678273867",
-                address: "21 rue Haxo",
-                admin: true)
-user.save!
+
+user_first = User.new(first_name: "Joy",
+                      last_name: "Klasen",
+                      password: "azerty",
+                      email: "jlksn@gmail.com",
+                      phone_number: "0678273867",
+                      address: "21 rue Haxo",
+                      admin: true)
+user_first.save!
 
 event_first = Event.new(start_date: DateTime.new(2022,2,3,4,5,6),
                         end_date: DateTime.new(2023,2,3,4,5,6),
@@ -31,7 +32,7 @@ event_first = Event.new(start_date: DateTime.new(2022,2,3,4,5,6),
                         title: "Mariage de Joy KLSN")
 event_first.save!
 
-invitation = Invitation.new(user_id: user.id,
+invitation = Invitation.new(user: user_first,
                             event: event_first,
                             status: true,
                             partner: true,
@@ -42,7 +43,6 @@ budget_first = Budget.new(initial_budget: 1000,
                           remaining_budget: 1000,
                           event: event_first)
 budget_first.save!
-
 
 spending = Spending.new(amount: 30.0,
                         category: "champagne",
