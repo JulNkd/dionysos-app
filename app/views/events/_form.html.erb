@@ -3,7 +3,7 @@
     <%= f.input :category %>
     <%= f.input :address %>
     <%= f.input :description %>
-    <%= f.input :album, as: :file %>
+    <%= f.input :photos, as: :file, input_html: { multiple: true }%>
     <%= f.input :start_date %>
     <%= f.input :end_date %>
     <%= f.submit %>

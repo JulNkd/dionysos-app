@@ -1,0 +1,7 @@
+<h1>index spendings</h1>
+<% @spendings.each do |spending| %>
+  <%= spending.amount %>€
+  <%= spending.category %>
+  <%= spending.date %>
+  <br>
+<% end %>
