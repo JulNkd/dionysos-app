@@ -9,8 +9,8 @@ require "faker"
 Invitation.destroy_all
 User.destroy_all
 Spending.destroy_all
-Event.destroy_all
 Budget.destroy_all
+Event.destroy_all
 
 user_first = User.new(first_name: "Joy",
                       last_name: "Klasen",

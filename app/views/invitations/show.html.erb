@@ -1,1 +1,3 @@
-<%= @user %>
+<% @event.users.each do |event| %>
+<%= event.first_name %>
+<% end %>

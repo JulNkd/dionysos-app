@@ -9,7 +9,7 @@ class InvitationsController < ApplicationController
 
   def show
     # profil de l'invité
-    @event.user_id
+    @event.users.ids
   end
 
   def new
