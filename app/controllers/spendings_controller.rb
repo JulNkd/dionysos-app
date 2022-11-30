@@ -1,5 +1,5 @@
 class SpendingsController < ApplicationController
-  before_action :set_event, only: %i[new create show]
+  before_action :set_event, only: %i[new create show index]
 
   def new
     @spending = Spending.new
@@ -17,7 +17,7 @@ class SpendingsController < ApplicationController
   end
 
   def index
-    @spendings = Spending.all
+    @spendings = @event.spendings
   end
 
   private
