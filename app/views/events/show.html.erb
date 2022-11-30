@@ -8,7 +8,7 @@
   <p>Date de fin : <%= @event.end_date %></p>
   <%= link_to "Modifier l'événement", edit_event_path(@event.id) %>
   <h2>Album de <%= @event.title %></h2>
-  <%= link_to "Ajouter une photo à l'album", edit_event_path(@event.id) %>
+  <%# <%= link_to "Ajouter une photo à l'album", edit_event_path(@event.id) %>
   <ul>
   <% @event.photos.each do |photo| %>
     <%= cl_image_tag photo.key, width: 400, height: 300, crop: :fill %>

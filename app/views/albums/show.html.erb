@@ -1,0 +1,8 @@
+
+<ul>
+  <li>
+    <% @album.photos.each do |photo| %>
+     <%= cl_image_tag photo.key, width: 400 %>
+     <% end %>
+  </li>
+</ul>
