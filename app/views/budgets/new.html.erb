@@ -1,0 +1,5 @@
+<h1>view new budget</h1>
+<%= simple_form_for [@event, @budget] do |f| %>
+  <%= f.input :initial_budget %>
+  <%= f.submit %>
+<% end %>

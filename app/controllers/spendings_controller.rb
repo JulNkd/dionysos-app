@@ -26,7 +26,4 @@ class SpendingsController < ApplicationController
     @event = Event.find(params[:event_id])
   end
 
-  def spending_params
-    params.require(:spending).permit(:amount, :category, :date)
-  end
 end

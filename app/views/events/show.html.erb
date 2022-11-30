@@ -1,4 +1,6 @@
 <div class="container">
+  <%= link_to "Définir un nouveau budget", new_event_budget_path(@event) %>
+  <h2><%= @event.budgets %></h2>
   <h2><%= @event.title %></h2>
   <p><%= @event.address %></p>
   <p><%= @event.category %></p>
