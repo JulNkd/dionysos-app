@@ -1,4 +1,13 @@
 <div class="container">
+  <%= link_to "Ajouter une nouvelle dépense", new_event_spending_path(@event) %>
+  <% if @event.budget.nil? %>
+    <%= link_to "Définir un nouveau budget", new_event_budget_path(@event) %>
+    <% else %>
+    <%= link_to "Mettre à jour mon budget initial", edit_event_budget_path(@event) %>
+    <h2>Budget initial : <%= @event.budget.initial_budget %></h2>
+    <h2>Budget restant : <%= @event.budget.remaining_budget %></h2>
+  <% end %>
+
   <h2><%= @event.title %></h2>
   <p><%= @event.address %></p>
   <p><%= @event.category %></p>
