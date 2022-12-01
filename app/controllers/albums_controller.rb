@@ -10,15 +10,10 @@ class AlbumsController < ApplicationController
     @album.user = current_user
     @album.event = @event
     if @album.save!
-      redirect_to event_album_path(@event, @album)
+      redirect_to photos_event_path(@event)
     else
       render :new, status: :unprocessable_entity
     end
-  end
-
-  def show
-    @album = Album.find(params[:id])
-    @event = Event.find(params[:event_id])
   end
 
   private

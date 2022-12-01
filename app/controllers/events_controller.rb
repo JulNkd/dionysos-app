@@ -6,7 +6,7 @@ class EventsController < ApplicationController
   def create
     @event = Event.new(event_params)
     if @event.save!
-      redirect_to new_event_album(@event)
+      redirect_to event_path(@event)
     else
       render :new, status: :unprocessable_entity
     end
@@ -26,9 +26,14 @@ class EventsController < ApplicationController
     redirect_to event_path(@event)
   end
 
+  def photos
+    @event = Event.find(params[:id])
+    @albums = @event.albums
+  end
+
   private
 
   def event_params
-    params.require(:event).permit(:start_date, :end_date, :category, :description, :address, :title, photos: [])
+    params.require(:event).permit(:start_date, :end_date, :category, :description, :address, :title, :photo)
   end
 end
