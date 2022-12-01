@@ -1,7 +1,12 @@
 <h1>index spendings</h1>
+<% sum = 0 %>
 <% @spendings.each do |spending| %>
   <%= spending.amount %>€
   <%= spending.category %>
   <%= spending.date %>
+  <%= sum += spending.amount %>
+
   <br>
 <% end %>
+  Total : <%= sum %>€ <br>
+  <%= link_to "show event", event_path(@event) %>
