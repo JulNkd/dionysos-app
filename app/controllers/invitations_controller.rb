@@ -1,27 +1,47 @@
 class InvitationsController < ApplicationController
   before_action :set_event
-  # before_action :set_user, except: [:index, :new, :create]
+  # before_action :set_user, only: [ :show :index ]
 
   def index
     # trombinoscope de tous les invités
     @event.users
+    # @users = params[:invitation][:user]
+    # @user = User.find(params[:user_id])
+    # @invitation = Invitation.find(params[:id])
+    @invitation = current_user.invitations.find_by(event: @event)
   end
 
   def show
-    # profil de l'invité
-    @event.users.ids
   end
 
   def new
     @invitation = Invitation.new
+    @users = User.all
   end
 
   def create
-    @invitation = Invitation.new(invitation_params)
+    # pour chaque instance de user séléctionné dans le form créer une invitation
+    @invitation = Invitation.new(invitations_params)
     @invitation.event = @event
-    @invitation.save
-    # No need for app/views/invitations/create.html.erb
-    redirect_to event_path(@event)
+    @users = params[:invitation][:user]
+    @users.each do |selected|
+      @user = User.find_by(first_name: selected)
+      @invitation.user = @user
+    end
+    if @invitation.save(user: @user, event: @event)
+      redirect_to event_path(@event)
+    else
+      render :new, status: :unprocessable_entity
+    end
+
+    # @user = User.find(params[:invitation][:user])
+    # @invitation.user = @user
+    # if @invitation.save
+    #   # No need for app/views/invitations/create.html.erb
+    #   redirect_to event_path(@event)
+    # else
+    #   render :new, status: :unprocessable_entity
+    # end
   end
 
   def edit
@@ -30,9 +50,9 @@ class InvitationsController < ApplicationController
 
   def update
     @invitation = Invitation.find(params[:id])
-    @invitation.update(invitation_params)
+    @invitation.update(invitations_params)
     # No need for app/views/invitations/update.html.erb
-    redirect_to invitation_path(@invitation)
+    redirect_to event_path(@event)
   end
 
   private
@@ -46,6 +66,6 @@ class InvitationsController < ApplicationController
   end
 
   def invitations_params
-    params.require(:invitation).permit(:status, :partner, :comment)
+    params.require(:invitation).permit(:user_id, :status, :partner, :comment)
   end
 end

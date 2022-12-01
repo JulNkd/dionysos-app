@@ -1,4 +1,12 @@
-<% @users.each do |user|%>
-<%= link_to user.first_name %>
-<%= user.last_name %>
+<ul><% @event.invitations.each do |invitation| %>
+  <li><%= invitation.user.first_name %>
+  <%= invitation.user.last_name %>
+  <% if invitation.status == true %>
+  <%= 'Participe' %>
+    <% elsif invitation.status == false %>
+  <%= 'Ne participe pas' %>
+    <% elsif %>
+  <%= 'En attente de réponse' %></li>
+  <% end %>
 <% end %>
+</ul>
