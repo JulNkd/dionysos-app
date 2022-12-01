@@ -1,7 +1,7 @@
 // Specific CSS for your home-page
 .first-div-landing{
   display: flex;
-  height:660px;
+  height:770px;
   align-items: center;
   background-color: white;
   justify-content: space-between;
@@ -24,6 +24,11 @@ h1{
   font-weight: 700;
   font-size: 64px;
 }
+
+h2{
+  font-weight: 700;
+  font-size: 40px;
+}
 .second-div-landing {
   background-color: #0D1B23;
   padding: 0px 40px 0px 40px;
@@ -34,6 +39,7 @@ h1{
   align-items: center;
   .list-avantages{
     display:flex;
+    margin-top: 60px;
   }
   margin-bottom: 4px;
 }
@@ -72,4 +78,13 @@ h1{
   width: 100%;
   padding: 0px 40px 0px 40px;
   background-color: white;
+}
+
+.avantage h3{
+  color:#FF5D29;
+  font-weight: 700;
+}
+
+.third-div-landing-img img{
+  border-radius: 8px;
 }
