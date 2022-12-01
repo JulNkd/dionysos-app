@@ -26,9 +26,14 @@ class EventsController < ApplicationController
     redirect_to event_path(@event)
   end
 
+  def photos
+    @event = Event.find(params[:id])
+    @albums = @event.albums
+  end
+
   private
 
   def event_params
-    params.require(:event).permit(:start_date, :end_date, :category, :description, :address, :title, photos: [])
+    params.require(:event).permit(:start_date, :end_date, :category, :description, :address, :title, :photo)
   end
 end
