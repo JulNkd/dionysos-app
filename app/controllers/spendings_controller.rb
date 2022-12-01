@@ -1,5 +1,6 @@
 class SpendingsController < ApplicationController
   before_action :set_event, only: %i[new create show index]
+  before_action :set_budget, only: %i[create]
 
   def new
     @spending = Spending.new
@@ -11,6 +12,8 @@ class SpendingsController < ApplicationController
     # seulement si event.budget.budget_restant > spendings params
     if @spending.save
       redirect_to event_spendings_path, status: :see_other
+      @budget.remaining_budget -= @spending.amount
+      @budget.save!
     else
       render :new, status: :unprocessable_entity
     end
@@ -24,6 +27,10 @@ class SpendingsController < ApplicationController
 
   def set_event
     @event = Event.find(params[:event_id])
+  end
+
+  def set_budget
+    @budget = @event.budget
   end
 
   def spending_params
