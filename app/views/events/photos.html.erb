@@ -1,0 +1,7 @@
+<h1> <%= @event.title %>'s album </h1>
+
+<% @albums.each do |album| %>
+ <% album.photos.each do |photo| %>
+  <%= cl_image_tag photo.key, width: 400, height: 300, crop: :fill %>
+ <% end %>
+<% end %>

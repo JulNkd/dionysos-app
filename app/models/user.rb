@@ -5,4 +5,6 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
 
   has_many :invitations
+  has_many :events
+  has_many :albums
 end
