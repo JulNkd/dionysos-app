@@ -17,6 +17,32 @@
   transition-duration: 0.4s;
 }
 
+.large-orange-button {
+  background: #FF5D29;
+  border-radius: 4px;
+  text-decoration: none;
+  color: white;
+  font-family: 'Barlow';
+  font-weight: 600;
+  padding:12px 133px;
+}
+
+.large-orange-button:hover {
+  padding:16px 24px;
+  color: white;
+  transition-timing-function: ease-in-out;
+  transition-duration: 0.4s;
+}
+
+.large-grey-button {
+  background: #EAEAEA;
+  border-radius: 4px;
+  text-decoration: none;
+  color: white;
+  font-family: 'Barlow';
+  font-weight: 600;
+  padding:12px 133px;
+
 .button-bottom-landing{
 display:inline-block;
 margin: 120px 120px;

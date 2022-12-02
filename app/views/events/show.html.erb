@@ -10,8 +10,25 @@
   <% end %>
 
   <%= cl_image_tag @event.photo.key, width: 1305, height: 345, crop: :fill, class: "banner" %>
+  <div class="wrapper">
+    <div class="left-container">
+      <h5 class="--black-big"><%= @event.start_date.strftime("Le %d/%m/%Y à %H:%M") %></h5>
+      <h1><%= @event.title %></h1>
+    </div>
 
-  <h2><%= @event.title %></h2>
+    <div class="right-container">
+      <div class="gestion-card">
+        <h2>Gestion de </br> l'événement</h2>
+        <p>Générale</p>
+        <a href="" class="large-orange-button">Modifier l'événement</a>
+        <p>Finances</p>
+        <a href="" class="large-orange-button">Ajouter une dépense</a>
+        <a href="" class="large-grey-button">Ajouter une dépense</a>
+      </div>
+    </div>
+  </div>
+
+
   <p><%= @event.address %></p>
   <p><%= @event.category %></p>
   <p><%= @event.description %></p>
