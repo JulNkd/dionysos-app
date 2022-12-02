@@ -1,1 +1,90 @@
 // Specific CSS for your home-page
+.first-div-landing{
+  display: flex;
+  height:770px;
+  align-items: center;
+  background-color: white;
+  justify-content: space-between;
+  .first-div-text{
+    max-width: 780px;
+    h5{
+      margin-bottom: 40px;
+      font-size: 28px;
+    }
+  }
+  img{
+    height: auto;
+    width: 200px;
+    border-radius: 120px;
+  }
+  margin-bottom: 4px;
+}
+
+h1{
+  font-weight: 700;
+  font-size: 64px;
+}
+
+h2{
+  font-weight: 700;
+  font-size: 40px;
+}
+.second-div-landing {
+  background-color: #0D1B23;
+  padding: 0px 40px 0px 40px;
+  color:white;
+  height:400px;
+  text-align: center;
+  display: flex;
+  align-items: center;
+  .list-avantages{
+    display:flex;
+    margin-top: 60px;
+  }
+  margin-bottom: 4px;
+}
+
+.third-div-landing{
+  display:flex;
+  img{
+    height: 560px;
+  }
+  margin-bottom: 4px;
+}
+
+.fourth-div-landing-img{
+  display:flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 4px;
+  img{
+    height: 400px;
+    border-radius: 8px;
+  }
+  .container-img-landing{
+    position:relative;
+    text-align:center;
+    color:white;
+      .landing-text-img {
+      position: absolute;
+      top: 8px;
+      left: 16px;
+    }
+  }
+}
+
+.container-new{
+  margin: 0 auto;
+  width: 100%;
+  padding: 0px 40px 0px 40px;
+  background-color: white;
+}
+
+.avantage h3{
+  color:#FF5D29;
+  font-weight: 700;
+}
+
+.third-div-landing-img img{
+  border-radius: 8px;
+}

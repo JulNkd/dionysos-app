@@ -47,6 +47,9 @@ gem "bootsnap", require: false
 # Use Sass to process CSS
 gem "sassc-rails"
 
+# geocoding
+gem "geocoder"
+
 # gem faker
 gem 'faker', :git => 'https://github.com/faker-ruby/faker.git', :branch => 'main'
 
