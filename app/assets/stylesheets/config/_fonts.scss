@@ -40,7 +40,7 @@ h2 {
 h3 {
   font-family: 'Crimson Pro', serif;
   font-weight: 600;
-  font-size: 48px;
+  font-size: 64px;
   line-height: 60px;
   color: #CCEBFF;
   letter-spacing: -0.025em;
@@ -66,6 +66,9 @@ h5 {
 
   &.--black{
     color: #252525;
+    font-weight: 600;
+    font-family: 'Barlow', sans-serif;
+    font-size: 26px;
   }
   &.--black-big{
     color: #252525;
