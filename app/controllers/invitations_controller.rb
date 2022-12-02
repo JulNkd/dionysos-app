@@ -21,27 +21,16 @@ class InvitationsController < ApplicationController
 
   def create
     # pour chaque instance de user séléctionné dans le form créer une invitation
-    @invitation = Invitation.new(invitations_params)
-    @invitation.event = @event
+    # @invitation.event = @event
     @users = params[:invitation][:user]
     @users.each do |selected|
+      @invitation = Invitation.new(invitations_params)
       @user = User.find_by(first_name: selected)
       @invitation.user = @user
+      @invitation.event = @event
+      @invitation.save
     end
-    if @invitation.save(user: @user, event: @event)
-      redirect_to event_path(@event)
-    else
-      render :new, status: :unprocessable_entity
-    end
-
-    # @user = User.find(params[:invitation][:user])
-    # @invitation.user = @user
-    # if @invitation.save
-    #   # No need for app/views/invitations/create.html.erb
-    #   redirect_to event_path(@event)
-    # else
-    #   render :new, status: :unprocessable_entity
-    # end
+    redirect_to event_path(@event)
   end
 
   def edit
