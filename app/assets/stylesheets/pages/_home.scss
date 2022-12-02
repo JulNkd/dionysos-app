@@ -1,10 +1,10 @@
 // Specific CSS for your home-page
 .first-div-landing{
   display: flex;
-  height:770px;
+  height:100vh;
   align-items: center;
   background-color: white;
-  justify-content: space-between;
+  justify-content: space-evenly;
   .first-div-text{
     max-width: 780px;
     p{
@@ -14,7 +14,7 @@
   }
   img{
     height: auto;
-    width: 200px;
+    width: 190px;
     border-radius: 120px;
   }
   margin-bottom: 4px;
@@ -41,15 +41,24 @@ h2{
     display:flex;
     margin-top: 60px;
   }
-  margin-bottom: 4px;
 }
 
 .third-div-landing{
   display:flex;
+  justify-content: space-between;
+  padding-top:80px;
   img{
     height: 560px;
   }
-  margin-bottom: 4px;
+  .third-div-landing-img{
+    width:100%;
+  }
+}
+
+.third-div-landing-text{
+  flex-direction: column;
+  justify-content: space-between;
+  width:100%;
 }
 
 .fourth-div-landing-img{
@@ -87,4 +96,44 @@ h2{
 
 .third-div-landing-img img{
   border-radius: 8px;
+}
+
+.landing-icon{
+  color: #FF5D29;
+  background-color: rgba(255, 93, 41, 0.2);
+  padding: 20px;
+  border-radius: 8px;
+  align-items: center;
+}
+
+.icon-size{
+  font-size: 28px;
+}
+
+.last-title-landing{
+    margin-top: 80px;
+}
+
+.text-icon{
+  padding-left:16px;
+}
+
+.last-button-landing{
+  display: flex;
+  justify-content: center;
+}
+
+.homepage-container-image-banner {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-right: 4vmin;
+}
+
+.premiere-image {
+  height: 350px !important;
+}
+
+.seconde-image {
+  margin-top: 2vmin;
 }
