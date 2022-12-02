@@ -1,5 +1,7 @@
 // Import Google fonts
 @import url('https://fonts.googleapis.com/css?family=Nunito:400,700|Work+Sans:400,700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Crimson+Pro:wght@400;500;600;700&display=swap');
+
 
 // Define fonts for body and headers
 $body-font: "Work Sans", "Helvetica", "sans-serif";
@@ -14,3 +16,63 @@ $headers-font: "Nunito", "Helvetica", "sans-serif";
 //        font-url('FontFile.ttf') format('truetype')
 // }
 // $my-font: "Font Name";
+
+
+// général style
+
+h1 {
+  font-family: 'Crimson Pro', serif;
+  font-weight: 600;
+  font-size: 64px;
+  line-height: 60px;
+  letter-spacing: -0.025em;
+  color: #252525;
+}
+
+h2 {
+  font-family: 'Crimson Pro', serif;
+  font-weight: 600;
+  font-size: 48px;
+  line-height: 60px;
+  letter-spacing: -0.025em;
+  color: #252525;
+}
+
+h3 {
+  font-family: 'Crimson Pro', serif;
+  font-weight: 600;
+  font-size: 48px;
+  line-height: 60px;
+  color: #CCEBFF;
+  letter-spacing: -0.025em;
+}
+
+h4 {
+  font-family: 'Crimson Pro', serif;
+  font-weight: 700;
+  font-size: 38px;
+  line-height: 60px;
+  color: white;
+  letter-spacing: -0.025em;
+}
+
+h5 {
+  font-family: 'Barlow', sans-serif;
+  font-weight: 500;
+  font-size: 26px;
+
+  &.--white {
+    color: white;
+  }
+
+  &.--black{
+    color: #252525;
+  }
+}
+
+p {
+  font-family: 'Barlow', sans-serif;
+  font-weight: 300;
+  font-size: 20px;
+  opacity: 70%;
+}
