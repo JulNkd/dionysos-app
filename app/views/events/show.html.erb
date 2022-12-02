@@ -9,11 +9,12 @@
     <h2>Budget restant : <%= @event.budget.remaining_budget %></h2>
   <% end %>
 
+  <%= cl_image_tag @event.photo.key, width: 1305, height: 345, crop: :fill, class: "banner" %>
+
   <h2><%= @event.title %></h2>
   <p><%= @event.address %></p>
   <p><%= @event.category %></p>
   <p><%= @event.description %></p>
-  <%= cl_image_tag @event.photo.key, width: 400, height: 300, crop: :fill %>
   <p>Date de début : <%= @event.start_date %></p>
   <p>Date de fin : <%= @event.end_date %></p>
   <%= link_to "Modifier l'événement", edit_event_path(@event.id) %>
@@ -27,4 +28,3 @@
     <%= f.submit %>
   <% end %>
   <% end %>
-
