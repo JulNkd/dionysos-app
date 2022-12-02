@@ -38,38 +38,58 @@
   </div>
 
   <div class="container-new">
-    <div class="third-div-landing">
+    <div class="third-div-landing justify-content-between">
       <div class="third-div-landing-img">
-        <img src="https://images.pexels.com/photos/1317365/pexels-photo-1317365.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2" alt="">
+        <img src="https://res.cloudinary.com/dct6y4tya/image/upload/v1669977132/Group_25_ihpdkm.png" alt="">
       </div>
-      <div class="third-div-landing-text">
+      <div class="third-div-landing-text d-flex">
         <div>
-          <h1>Comment ça marche ?</h1>
+          <h1>Comment ça</h1>
+          <h1>marche ?</h1>
         </div>
+        <div class="d-flex align-items-center">
           <div>
+            <i class="fa-solid fa-right-to-bracket landing-icon icon-size"></i>
+          </div>
+          <div class="text-icon">
             <h3>Inscrivez vous</h3>
             <h5>Enregistrez vos informations pour participer aux événements de vos proches et créer votre propre événement</h5>
           </div>
+        </div>
 
+        <div class="d-flex align-items-center">
           <div>
-            <h3>Créez votre événement</h3>
+            <i class="fa-solid fa-circle-plus landing-icon icon-size"></i>
+          </div>
+          <div class="text-icon">
+            <h3>Créez votre premier événement</h3>
             <h5>Enregistrez votre événement et accédez à votre tableau de bord</h5>
           </div>
-
+        </div>
+        <div class="d-flex align-items-center">
           <div>
+            <i class="fa-solid fa-user-plus landing-icon icon-size"></i>
+          </div>
+          <div class="text-icon">
             <h3>Invitez vos proches</h3>
             <h5>Invitez vos amis et votre famille par email ou SMS</h5>
           </div>
-
+        </div>
+        <div class="d-flex">
           <div>
+            <i class="fa-solid fa-bars-progress landing-icon icon-size"></i>
+          </div>
+          <div class="text-icon">
             <h3>Gérez votre événement</h3>
             <h5>Gérez votre budget, l’album photo de votre événement et vos invités en quelques clics</h5>
           </div>
+        </div>
       </div>
     </div>
 
     <div>
-      <h1>Une infinité de possibilités</h1>
+      <h1 class="last-title-landing">Une infinité de</h1>
+      <h1>possibilités</h1>
     </div>
 
     <div class="fourth-div-landing-img">
@@ -90,6 +110,9 @@
         <div class="landing-text-img">Champagne</div>
       </div>
     </div>
-    <%= link_to "Créez votre événement", new_event_path, class:"landing-orange-button" %>
+
+    <div class="last-button-landing">
+      <%= link_to "Créez votre événement", new_event_path, class:"landing-orange-button button-bottom-landing" %>
+    </div>
   </div>
 </div>
