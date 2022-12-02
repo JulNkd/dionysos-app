@@ -4,7 +4,7 @@
     <%= f.input :address %>
     <%= f.input :description %>
     <%= f.input :photo, as: :file %>
-    <%= f.input :start_date %>
-    <%= f.input :end_date %>
+    <%= f.input :start_date, label: "Sélectionnez la date et l'heure de début de votre évènement", as: :string, input_html: { class: "range_start"} %>
+    <%= f.input :end_date, label: "Sélectionnez la date et l'heure de fin de votre évènement", as: :string, input_html: { class: "range_end"} %>
     <%= f.submit %>
   <% end %>
