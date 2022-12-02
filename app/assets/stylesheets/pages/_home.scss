@@ -1,10 +1,10 @@
 // Specific CSS for your home-page
 .first-div-landing{
   display: flex;
-  height:90vh;
+  height:100vh;
   align-items: center;
   background-color: white;
-  justify-content: space-between;
+  justify-content: space-evenly;
   .first-div-text{
     max-width: 780px;
     h5{
@@ -14,7 +14,7 @@
   }
   img{
     height: auto;
-    width: 200px;
+    width: 190px;
     border-radius: 120px;
   }
   margin-bottom: 4px;
@@ -121,4 +121,19 @@ h2{
 .last-button-landing{
   display: flex;
   justify-content: center;
+}
+
+.homepage-container-image-banner {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-right: 4vmin;
+}
+
+.premiere-image {
+  height: 350px !important;
+}
+
+.seconde-image {
+  margin-top: 2vmin;
 }
