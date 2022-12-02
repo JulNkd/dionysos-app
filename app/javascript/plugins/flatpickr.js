@@ -1,26 +1,18 @@
 import flatpickr from "flatpickr";
+import rangePlugin from 'flatpickr/dist/plugins/rangePlugin';
+
 const initFlatpickr = () => {
-  flatpickr(".datepicker", {
+  flatpickr(".range_start", {
     mode: "multiple",
     allowInput: true,
     enableTime: true,
     mode: "range",
-    minTime: "12:00",
-    // altInput: true,
-    // altFormat: "F j, Y",
+    DefaultDate: "12:00",
     dateFormat: "d-m-Y H:i",
     minDate: "today",
-    time_24hr: true
-    // enableTime: true,
-    // altInput: true,
-    // mode: "multiple",
-    // altFormat: "F j, Y",
-    // dateFormat: "d-m-Y H:i",
-    // // conjunction: " au ",
-    // minTime: "12:00",
-    // minDate: "today",
+    time_24hr: true,
+    plugins: [new rangePlugin({ input: ".range_end"})]
     // maxDate: new Date().fp_incr(31),
-    //
     // inline: true,
   });
 }

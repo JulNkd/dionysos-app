@@ -5,9 +5,6 @@ class EventsController < ApplicationController
 
   def create
     @event = Event.new(event_params)
-    date = params[:event][:start_date].split
-    @event.end_date = date[3]
-    @end_time = date[4]
     if @event.save!
       redirect_to event_path(@event)
     else
