@@ -1,4 +1,5 @@
 <div class="container">
+<%= link_to "Envoyer des invitations", new_event_invitation_path(@event) %>
   <%= link_to "Ajouter une nouvelle dépense", new_event_spending_path(@event) %>
   <% if @event.budget.nil? %>
     <%= link_to "Définir un nouveau budget", new_event_budget_path(@event) %>
@@ -19,3 +20,11 @@
   <%= link_to "Voir l'album de l'évenement", photos_event_path(@event.id) %>
   <%= link_to "Ajouter une photo à l'album", new_event_album_path(@event.id) %>
 </div>
+
+<%  if @invitation %>
+  <%= simple_form_for [@event, @invitation] do |f| %>
+    <%= f.input :status, label: 'Je participe' %>
+    <%= f.submit %>
+  <% end %>
+  <% end %>
+

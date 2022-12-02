@@ -21,6 +21,15 @@ user_first = User.new(first_name: "Joy",
                       admin: true)
 user_first.save!
 
+user_second = User.new(first_name: "Julien",
+  last_name: "Naked",
+  password: "azerty",
+  email: "jul@gmail.com",
+  phone_number: "0678273867",
+  address: "21 rue Haxo",
+  admin: true)
+user_second.save!
+
 event_first = Event.new(start_date: DateTime.new(2022,2,3,4,5,6),
                         end_date: DateTime.new(2023,2,3,4,5,6),
                         category: "Wedding",
@@ -35,6 +44,13 @@ invitation = Invitation.new(user: user_first,
                             partner: true,
                             comment: "J'ai trop hâte d'être invité à ton mariage Joy xD ^^")
 invitation.save!
+
+invitation_second = Invitation.new(user: user_second,
+  event: event_first,
+  status: true,
+  partner: true,
+  comment: "J'ai trop hâte d'être invité à ton mariage Joy xD ^^")
+invitation_second.save!
 
 budget_first = Budget.new(initial_budget: 1000,
                           remaining_budget: 1000,
