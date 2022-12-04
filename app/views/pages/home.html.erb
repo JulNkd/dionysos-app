@@ -2,24 +2,24 @@
     <div class="first-div-landing">
       <div class="first-div-text">
         <h1>Organisez votre événement en toute simplicité.</h1>
-        <h5>Avec Dionysos, rassemblez toutes les fonctionnalités nécessaires  à l’organisation
-        de votre événement dans une seule interface !</h5>
-        <%= link_to "Créez votre événement", new_event_path, class:"landing-orange-button" %>
+        <p>Avec Dionysos, rassemblez toutes les fonctionnalités nécessaires  à l’organisation
+        de votre événement dans une seule interface !</p>
+        <%= link_to "Créez votre événement", new_event_path, class:"primary-orange-button" %>
       </div>
       <div class="first-div-images d-flex">
-        <div class="align-items-center ">
-          <img src="https://images.pexels.com/photos/3171770/pexels-photo-3171770.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2" alt="">
-          <img src="https://images.pexels.com/photos/1164985/pexels-photo-1164985.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2" alt="">
+        <div class="align-items-center homepage-container-image-banner">
+          <img class="seconde-image" src="https://images.pexels.com/photos/3171770/pexels-photo-3171770.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2" alt="">
+          <img class="seconde-image" src="https://images.pexels.com/photos/1164985/pexels-photo-1164985.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2" alt="">
         </div>
         <div class="img-solo d-flex align-items-center">
-          <img src="https://images.unsplash.com/photo-1517263904808-5dc91e3e7044?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=776&q=80" alt="">
+          <img class="premiere-image" src="https://images.unsplash.com/photo-1517263904808-5dc91e3e7044?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=776&q=80" alt="">
         </div>
       </div>
     </div>
   </div>
   <div class="second-div-landing">
     <div>
-      <h2>Dionysos vous facilite la gestion de vos festivités</h2>
+      <h3 class="h3-size">Dionysos vous facilite la gestion de vos festivités</h3>
       <div class="list-avantages">
         <div class="avantage">
           <h3>Rassemblez</h3>
@@ -38,38 +38,58 @@
   </div>
 
   <div class="container-new">
-    <div class="third-div-landing">
+    <div class="third-div-landing justify-content-between">
       <div class="third-div-landing-img">
-        <img src="https://images.pexels.com/photos/1317365/pexels-photo-1317365.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2" alt="">
+        <img src="https://res.cloudinary.com/dct6y4tya/image/upload/v1669977132/Group_25_ihpdkm.png" alt="">
       </div>
-      <div class="third-div-landing-text">
+      <div class="third-div-landing-text d-flex">
         <div>
-          <h1>Comment ça marche ?</h1>
+          <h1>Comment ça</h1>
+          <h1>marche ?</h1>
         </div>
+        <div class="d-flex align-items-center">
           <div>
-            <h3>Inscrivez vous</h3>
-            <h5>Enregistrez vos informations pour participer aux événements de vos proches et créer votre propre événement</h5>
+            <i class="fa-solid fa-right-to-bracket landing-icon icon-size"></i>
           </div>
+          <div class="text-icon">
+            <h5 class="--black">Inscrivez vous</h5>
+            <p>Enregistrez vos informations pour participer aux événements de vos proches et créer votre propre événement</p>
+          </div>
+        </div>
 
+        <div class="d-flex align-items-center">
           <div>
-            <h3>Créez votre événement</h3>
-            <h5>Enregistrez votre événement et accédez à votre tableau de bord</h5>
+            <i class="fa-solid fa-circle-plus landing-icon icon-size"></i>
           </div>
-
+          <div class="text-icon">
+            <h5 class="--black">Créez votre premier événement</h5>
+            <p>Enregistrez votre événement et accédez à votre tableau de bord</p>
+          </div>
+        </div>
+        <div class="d-flex align-items-center">
           <div>
-            <h3>Invitez vos proches</h3>
-            <h5>Invitez vos amis et votre famille par email ou SMS</h5>
+            <i class="fa-solid fa-user-plus landing-icon icon-size"></i>
           </div>
-
+          <div class="text-icon">
+            <h5 class="--black">Invitez vos proches</h5>
+            <p>Invitez vos amis et votre famille par email ou SMS</p>
+          </div>
+        </div>
+        <div class="d-flex">
           <div>
-            <h3>Gérez votre événement</h3>
-            <h5>Gérez votre budget, l’album photo de votre événement et vos invités en quelques clics</h5>
+            <i class="fa-solid fa-bars-progress landing-icon icon-size"></i>
           </div>
+          <div class="text-icon">
+            <h5 class="--black">Gérez votre événement</h5>
+            <p>Gérez votre budget, l’album photo de votre événement et vos invités en quelques clics</p>
+          </div>
+        </div>
       </div>
     </div>
 
     <div>
-      <h1>Une infinité de possibilités</h1>
+      <h1 class="last-title-landing">Une infinité de</h1>
+      <h1>possibilités</h1>
     </div>
 
     <div class="fourth-div-landing-img">
@@ -90,6 +110,9 @@
         <div class="landing-text-img">Champagne</div>
       </div>
     </div>
-    <%= link_to "Créez votre événement", new_event_path, class:"landing-orange-button" %>
+
+    <div class="last-button-landing">
+      <%= link_to "Créez votre événement", new_event_path, class:"primary-orange-button button-bottom-landing" %>
+    </div>
   </div>
 </div>

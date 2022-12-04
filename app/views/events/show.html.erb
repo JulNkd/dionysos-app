@@ -1,24 +1,54 @@
 <div class="container">
-<%= link_to "Envoyer des invitations", new_event_invitation_path(@event) %>
-  <%= link_to "Ajouter une nouvelle dépense", new_event_spending_path(@event) %>
-  <% if @event.budget.nil? %>
-    <%= link_to "Définir un nouveau budget", new_event_budget_path(@event) %>
-    <% else %>
-    <%= link_to "Mettre à jour mon budget initial", edit_event_budget_path(@event) %>
-    <h2>Budget initial : <%= @event.budget.initial_budget %></h2>
-    <h2>Budget restant : <%= @event.budget.remaining_budget %></h2>
-  <% end %>
 
-  <h2><%= @event.title %></h2>
+  <%= cl_image_tag @event.photo.key, width: 1305, height: 345, crop: :fill, class: "banner" %>
+  <div class="wrapper">
+    <div class="left-container">
+      <h5 class="--black-big"><%= @event.start_date.strftime("Le %d/%m/%Y à %H:%M") %></h5>
+      <h1><%= @event.title %></h1>
+      <%= link_to "Envoyer des invitations", new_event_invitation_path(@event), class:"primary-orange-button" %>
+      <br>
+      <br>
+      <%= link_to "Ajouter une nouvelle dépense", new_event_spending_path(@event), class:"primary-orange-button" %>
+      <br>
+      <br>
+      <%= link_to "Voir mes invités", event_invitations_path(@event), class:"primary-orange-button" %>
+
+      <% if @event.budget.nil? %>
+        <%= link_to "Définir un nouveau budget", new_event_budget_path(@event), class:"primary-orange-button" %>
+      <% else %>
+        <%= link_to "Mettre à jour mon budget initial", edit_event_budget_path(@event), class:"primary-orange-button" %>
+        <br>
+        <br>
+        <h2>Budget initial : <%= @event.budget.initial_budget %></h2>
+        <h2>Budget restant : <%= @event.budget.remaining_budget %></h2>
+      <% end %>
+    </div>
+
+    <div class="right-container">
+      <div class="gestion-card">
+        <h2>Gestion de </br> l'événement</h2>
+        <p>Générale</p>
+        <a href="" class="large-orange-button">Modifier l'événement</a>
+        <p>Finances</p>
+        <a href="" class="large-orange-button">Ajouter une dépense</a>
+        <a href="" class="large-grey-button">Ajouter une dépense</a>
+      </div>
+    </div>
+  </div>
+
+
   <p><%= @event.address %></p>
   <p><%= @event.category %></p>
   <p><%= @event.description %></p>
-  <%= cl_image_tag @event.photo.key, width: 400, height: 300, crop: :fill %>
   <p>Date de début : <%= @event.start_date.strftime("le %d/%m/%Y à %H:%M")%></p>
   <p>Date de fin : <%= @event.end_date.strftime("le %d/%m/%Y à %H:%M")%></p>
-  <%= link_to "Modifier l'événement", edit_event_path(@event.id) %>
-  <%= link_to "Voir l'album de l'évenement", photos_event_path(@event.id) %>
-  <%= link_to "Ajouter une photo à l'album", new_event_album_path(@event.id) %>
+  <%= link_to "Modifier l'événement", edit_event_path(@event.id), class:"primary-orange-button" %>
+  <br>
+  <br>
+  <%= link_to "Voir l'album de l'évenement", photos_event_path(@event.id), class:"primary-orange-button" %>
+  <br>
+  <br>
+  <%= link_to "Ajouter une photo à l'album", new_event_album_path(@event.id), class:"primary-orange-button" %>
 </div>
 
 <%  if @invitation %>

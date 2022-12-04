@@ -1,17 +1,50 @@
-.landing-orange-button {
+.primary-orange-button {
   background-color: #FF5D29;
   text-decoration: none;
   color: white;
-  border-radius: 120px;
-  font-weight: 700;
-  transition-duration: 0.2s;
+  border-radius: 8px;
+  font-family: 'Barlow';
+  font-weight: 600;
+  transition-duration: 0.4s;
   font-size: 20px;
   padding:12px 20px;
 }
 
-.landing-orange-button:hover {
+.primary-orange-button:hover {
   padding:16px 24px;
   color: white;
   transition-timing-function: ease-in-out;
-  transition-duration: 0.2s;
+  transition-duration: 0.4s;
+}
+
+.large-orange-button {
+  background: #FF5D29;
+  border-radius: 4px;
+  text-decoration: none;
+  color: white;
+  font-family: 'Barlow';
+  font-weight: 600;
+  padding:12px 133px;
+}
+
+.large-orange-button:hover {
+  padding:16px 24px;
+  color: white;
+  transition-timing-function: ease-in-out;
+  transition-duration: 0.4s;
+}
+
+.large-grey-button {
+  background: #EAEAEA;
+  border-radius: 4px;
+  text-decoration: none;
+  color: white;
+  font-family: 'Barlow';
+  font-weight: 600;
+  padding:12px 133px;
+}
+
+.button-bottom-landing{
+display:inline-block;
+margin: 120px 120px;
 }

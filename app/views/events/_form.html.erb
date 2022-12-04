@@ -1,10 +1,14 @@
+<div class="form-container">
+<h2 class="title">Créer un évenement</h2>
 <%= simple_form_for(event) do |f| %>
-    <%= f.input :title %>
-    <%= f.input :category, collection: ["Anniversaire", "Mariage", "Baptême", "Fête", "Autre"]  %>
-    <%= f.input :address %>
-    <%= f.input :description %>
-    <%= f.input :photo, as: :file %>
+    <%= f.input :title, label: "Nom de l'évènement" %>
+    <%= f.input :category, label: "Catégorie de l'évènement", collection: ["Anniversaire", "Mariage", "Baptême", "Fête", "Autre"] %>
+    <%= f.input :address, label: "Lieu de l'évènement" %>
     <%= f.input :start_date, label: "Sélectionnez la date et l'heure de début de votre évènement", as: :string, input_html: { class: "range_start"} %>
     <%= f.input :end_date, label: "Sélectionnez la date et l'heure de fin de votre évènement", as: :string, input_html: { class: "range_end"} %>
-    <%= f.submit %>
+    <%= f.input :description, label: "Description" %>
+    <%= f.input :photo, as: :file, label: "Image" %>
+    <div class="button-centered"><%= f.submit class:"primary-orange-button" %>
   <% end %>
+</div>
+</div>
