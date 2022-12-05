@@ -11,11 +11,4 @@ class User < ApplicationRecord
   def full_name
     "#{self.first_name} #{self.last_name}"
   end
-
-  # include PgSearch::Model
-  # pg_search_scope :search_by_first_name_and_last_name,
-  #                 against: %i[first_name last_name],
-  #                 using: {
-  #                 tsearch: { prefix: true }
-  #   }
 end

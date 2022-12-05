@@ -1,15 +1,17 @@
-<%= form_with url: event_invitations_path, method: :get, class: "form-banner" do
-  <%= text_field_tag :query,
+<%= form_with url: event_invitations_path, method: :get, class: "form-banner" do %>
+   <%= text_field_tag :query,
     params[:query],
     class: "banner-input p-1",
-    placeholder: "Rechercher un invité"%>
+    placeholder: "Rechercher un invité"
+    %>
   <button class="main-btn" type="submit">
     <i class="fa-solid fa-magnifying-glass"></i>
   </button>
-  <% end %> %>
+  <% end %>
+
 
 <ul>
-  <% @event.invitations.each do |invitation| %>
+  <% @invitations.each do |invitation| %>
     <li>
         <%= invitation.user.first_name %>
         <%= invitation.user.last_name %>
