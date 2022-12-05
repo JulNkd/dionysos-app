@@ -1,0 +1,40 @@
+.container {
+  width: 1220px;
+}
+
+.all-invited {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.invited-avatars {
+  display: flex;
+  flex-direction: column;
+  padding: 24px;
+  align-items: center;
+}
+
+.name-status {
+  text-align: center;
+}
+
+.search-form {
+}
+
+.search-input {
+  border: 1px solid #D9D9D9;
+  border-radius: 6px;
+  width: 270px;
+  height: 34px;
+  outline: none !important;
+}
+
+.main-btn {
+  border: none;
+  text-decoration: none;
+  color: #D9D9D9;
+  border-radius: 6px;
+  height: 34px;
+  width: 34px;
+}
