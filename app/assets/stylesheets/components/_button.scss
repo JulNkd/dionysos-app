@@ -2,20 +2,19 @@
   background-color: #FF5D29;
   text-decoration: none;
   color: white;
-  border-radius: 8px;
+  border-radius: 4px;
   font-family: 'Barlow';
   font-weight: 600;
-  transition-duration: 0.4s;
-  font-size: 20px;
+  transition-duration: 0.3s;
   padding:12px 20px;
 }
-
 .primary-orange-button:hover {
   padding:16px 24px;
   color: white;
   transition-timing-function: ease-in-out;
-  transition-duration: 0.4s;
+  transition-duration: 0.3s;
 }
+
 
 .large-orange-button {
   background: #FF5D29;
@@ -24,24 +23,90 @@
   color: white;
   font-family: 'Barlow';
   font-weight: 600;
-  padding:12px 133px;
+  padding: 12px;
+  width: 100%;
+  display: block;
+  text-align: center;
+  margin-bottom: 5px;
+}
+.large-orange-button:hover {
+  color: white;
 }
 
-.large-orange-button:hover {
-  padding:16px 24px;
-  color: white;
-  transition-timing-function: ease-in-out;
-  transition-duration: 0.4s;
+
+.large-light-orange-button {
+  background: #FFE0D7;
+  border-radius: 4px;
+  text-decoration: none;
+  color: #FF5D29;
+  font-family: 'Barlow';
+  font-weight: 600;
+  padding: 12px;
+  width: 100%;
+  display: block;
+  text-align: center;
+  margin-bottom: 5px;
+}
+.large-light-orange-button:hover {
+  color: #FF5D29;
+}
+
+
+.large-blue-button {
+  background: #101B22;
+  border-radius: 4px;
+  text-decoration: none;
+  color: #CCEBFF;
+  font-family: 'Barlow';
+  font-weight: 600;
+  padding: 12px;
+  width: 100%;
+  display: block;
+  text-align: center;
+  margin-bottom: 5px;
+  transition-duration: 500ms;
+  transition: ease-in-out;
+  transition-property: margin-bottom;
+}
+.large-blue-button:hover {
+  color: #CCEBFF;
+}
+
+.large-light-blue-button {
+  background: #CCEBFF;
+  border-radius: 4px;
+  text-decoration: none;
+  color: #101B22;
+  font-family: 'Barlow';
+  font-weight: 600;
+  padding: 12px;
+  width: 100%;
+  display: block;
+  text-align: center;
+  margin-bottom: 5px;
+  transition-duration: 500ms;
+  transition: ease-in-out;
+  transition-property: margin-bottom;
+}
+.large-light-blue-button:hover {
+  color: #101B22;
 }
 
 .large-grey-button {
   background: #EAEAEA;
   border-radius: 4px;
   text-decoration: none;
-  color: white;
+  color: #252525;
   font-family: 'Barlow';
   font-weight: 600;
-  padding:12px 133px;
+  text-align: center;
+  padding:12px;
+  width: 100%;
+  display: block;
+  margin-bottom: 5px;
+}
+.large-grey-button:hover {
+  color: #252525;
 }
 
 .button-bottom-landing{
