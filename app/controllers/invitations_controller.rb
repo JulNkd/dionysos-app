@@ -1,8 +1,13 @@
 class InvitationsController < ApplicationController
   before_action :set_event
+<<<<<<< HEAD
   # before_action :set_user, only: [ :show :index ]
+=======
+  # before_action :set_user
+>>>>>>> bdada3620f958c65d1ab389793173ede2e845bfc
 
   def index
+    @invitation.event = @event
     # trombinoscope de tous les invités
     # @event = Event.find(params[:event_id])
     # @invitation = current_user.invitations.find_by(event: @event)
@@ -17,6 +22,11 @@ class InvitationsController < ApplicationController
   end
 
   def show
+<<<<<<< HEAD
+=======
+    # profil de l'invité
+    @user = User.find(params[:user_id])
+>>>>>>> bdada3620f958c65d1ab389793173ede2e845bfc
   end
 
   def new

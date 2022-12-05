@@ -30,6 +30,7 @@ user_second = User.new(first_name: "Julien",
   admin: true)
 user_second.save!
 
+<<<<<<< HEAD
 user_third = User.new(first_name: "Adrien",
   last_name: "Meco",
   password: "azerty",
@@ -39,6 +40,8 @@ user_third = User.new(first_name: "Adrien",
   admin: true)
 user_third.save!
 
+=======
+>>>>>>> bdada3620f958c65d1ab389793173ede2e845bfc
 event_first = Event.new(start_date: DateTime.new(2022,2,3,4,5,6),
                         end_date: DateTime.new(2023,2,3,4,5,6),
                         category: "Wedding",

@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <div class="container">
 <h1>Mes invités</h1>
 
@@ -35,3 +36,12 @@
     <% end %>
   </div>
 </div>
+=======
+<% if @event.user.status = true %>
+<% @event.users.each do |user|%>
+  <%# <%= link_to event_invitation_path %>
+  <%= user.first_name %>
+  <%= user.last_name %>
+<% end %>
+<% end %>
+>>>>>>> bdada3620f958c65d1ab389793173ede2e845bfc
