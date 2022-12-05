@@ -1,3 +1,4 @@
+require 'twilio-ruby'
 class InvitationsController < ApplicationController
   before_action :set_event
   # before_action :set_user, only: [ :show :index ]
@@ -19,6 +20,19 @@ class InvitationsController < ApplicationController
     @users = User.all
   end
 
+  def send_sms_to_contact
+    account_sid = ENV['account_sid']
+    auth_token = ENV['auth_token']
+
+    @client = Twilio::REST::Client.new(account_sid, auth_token)
+
+    @client.messages.create(
+      from: ENV["TWILIO_PHONE_NUMBER"],
+      to: "+33#{@user.phone_number}",
+      body: "https://www.dionysos.click/events/#{@invitation.event.id}"
+    )
+  end
+
   def create
     # pour chaque instance de user séléctionné dans le form créer une invitation
     # @invitation.event = @event
@@ -28,7 +42,9 @@ class InvitationsController < ApplicationController
       @user = User.find_by(first_name: selected)
       @invitation.user = @user
       @invitation.event = @event
-      @invitation.save
+      if @invitation.save
+        send_sms_to_contact
+      end
     end
     redirect_to event_path(@event)
   end
