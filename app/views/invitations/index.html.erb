@@ -1,4 +1,4 @@
-<%= form_with url: event_invitations_path, method: :get, class: "form-banner" do %>
+<%= form_with url: event_invitations_path, method: :get, class: "form-banner" do
   <%= text_field_tag :query,
     params[:query],
     class: "banner-input p-1",
@@ -6,17 +6,20 @@
   <button class="main-btn" type="submit">
     <i class="fa-solid fa-magnifying-glass"></i>
   </button>
-  <% end %>
+  <% end %> %>
 
-<ul><% @event.invitations.each do |invitation| %>
-  <li><%= invitation.user.first_name %>
-  <%= invitation.user.last_name %>
-  <% if invitation.status == true %>
-  <%= 'Participe' %>
-    <% elsif invitation.status == false %>
-  <%= 'Ne participe pas' %>
-    <% elsif %>
-  <%= 'En attente de réponse' %></li>
-  <% end %>
+<ul>
+  <% @event.invitations.each do |invitation| %>
+    <li>
+        <%= invitation.user.first_name %>
+        <%= invitation.user.last_name %>
+      <% if invitation.status == true %>
+        <%= 'Participe' %>
+          <% elsif invitation.status == false %>
+        <%= 'Ne participe pas' %>
+          <% elsif %>
+        <%= 'En attente de réponse' %>
+    </li>
+     <% end %>
 <% end %>
 </ul>

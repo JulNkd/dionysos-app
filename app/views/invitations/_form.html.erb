@@ -1,4 +1,4 @@
 <%= simple_form_for [@event, @invitation] do |f| %>
-    <%= f.input :user, as: :check_boxes, multiple: :true, label: 'Sélectionnez des invités', collection: User.all.map { |user| user.first_name } %>
+    <%= f.input :user, as: :check_boxes, multiple: :true, label: 'Sélectionnez des invités', collection: User.all, label_method: :full_name %>
     <%= f.submit%>
   <% end %>

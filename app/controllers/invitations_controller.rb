@@ -4,12 +4,8 @@ class InvitationsController < ApplicationController
 
   def index
     # trombinoscope de tous les invités
-    @invitation = current_user.invitations.find_by(event: @event)
-    if params[:query].present?
-      @event.users = User.search_by_first_name_and_last_name(params[:query])
-    else
-      @users = @event.users
-    end
+    # @invitation = current_user.invitations.find_by(event: @event)
+      @event.users
     # @users = params[:invitation][:user]
     # @user = User.find(params[:user_id])
     # @invitation = Invitation.find(params[:id])
@@ -17,6 +13,10 @@ class InvitationsController < ApplicationController
 
   def show
   end
+
+  # def full_name
+  #   User.all.map { |user| "#{user.first_name user.last_name}" }
+  # end
 
   def new
     @invitation = Invitation.new
