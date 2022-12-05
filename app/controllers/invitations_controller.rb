@@ -1,3 +1,5 @@
+require 'twilio-ruby'
+
 class InvitationsController < ApplicationController
   before_action :set_event
   # before_action :set_user, only: [ :show :index ]
@@ -47,8 +49,8 @@ class InvitationsController < ApplicationController
       @user = User.find_by(first_name: selected)
       @invitation.user = @user
       @invitation.event = @event
+      send_sms_to_contact
       if @invitation.save
-        send_sms_to_contact
       end
     end
     redirect_to event_path(@event)

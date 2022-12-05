@@ -16,3 +16,8 @@
 @import "pages/photos";
 @import "pages/index_invitations";
 
+.content {
+  min-height: 100%;
+  display: grid;
+  grid-template-rows: auto 1fr auto;
+}

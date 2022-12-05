@@ -15,13 +15,13 @@
         <th scope="col">Statut</th>
       </tr>
     </thead>
-    <tbody>
-    <% @events.each do |event| %>
+    <tbody class="event-content-profile">
+      <% @events.each do |event| %>
       <tr>
         <td scope="row" class="d-flex">
           <div>
             <% if event.photo.attached? %>
-              <%= cl_image_tag event.photo.key, width: 90, height: 90, crop: :fill, class:"rounded" %>
+              <%= cl_image_tag event.photo.key, width: 90, height: 90, crop: :fill, class:"rounded p-2" %>
             <% else %>
             <% end %>
           </div>
@@ -47,12 +47,63 @@
             <%= "-" %>
           <% end %>
         </td>
+        <td>
+          <% if DateTime.now >= event.start_date %>
+            <%= "Passé" %>
+          <% else %>
+            <%= "A venir" %>
+          <% end %>
+        </td>
       </tr>
       <% end %>
     </tbody>
   </table>
+
   <h2>Mes invitations</h2>
   <%= @invitations.each do |invitation| %>
     <%= invitation.event.title %>
   <% end %>
+  <table class="w-100">
+    <thead>
+      <tr class="column-names">
+        <th scope="col">Evénement</th>
+        <th scope="col">Invités</th>
+        <th scope="col">Statut</th>
+      </tr>
+    </thead>
+    <tbody class="event-content-profile">
+      <% @invitations.each do |invitation| %>
+        <tr>
+          <td scope="row" class="d-flex">
+            <div>
+              <% if invitation.event.photo.attached? %>
+                <%= cl_image_tag event.photo.key, width: 90, height: 90, crop: :fill, class:"rounded p-2" %>
+              <% else %>
+              <% end %>
+            </div>
+            <div class="table-event-name">
+              <h1></h1><%= invitation.event.title %>
+              <br>
+              <%= invitation.event.start_date.strftime("%d" + "." + "%m" + "." +"%Y") %>
+              <br>
+            </div>
+          </td>
+          <td>
+            <% if invitation.event.invitations.present? %>
+              <%= invitation.event.invitations.length %>
+            <% else %>
+              <%= "-" %>
+            <% end %>
+          </td>
+          <td>
+            <% if DateTime.now >= event.start_date %>
+              <%= "Passé" %>
+            <% else %>
+              <%= "A venir" %>
+            <% end %>
+          </td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
 </div>
