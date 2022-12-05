@@ -1,4 +1,3 @@
-require 'twilio-ruby'
 class InvitationsController < ApplicationController
   before_action :set_event
   # before_action :set_user, only: [ :show :index ]
