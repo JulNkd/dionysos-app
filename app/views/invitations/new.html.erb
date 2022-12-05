@@ -1,5 +1,8 @@
-<div class="container">
-  <h1>Inviter des participants</h1>
-
-  <%= render "form", event: @event, invitation: @invitation %>
-</div>
+<div class="form-container-spending">
+<h2 class="title">Inviter des participants</h2>
+<%= simple_form_for [@event, @invitation] do |f| %>
+    <%= f.input :user, as: :check_boxes, multiple: :true, label: 'Sélectionnez des invités', collection: User.all, label_method: :full_name %>
+    <div class="button-centered"><input type="submit" name="commit" value="Créer vos invitations" class="primary-orange-button-forms" data-disable-with="Create Event">
+  <% end %>
+  </div>
+  </div>
