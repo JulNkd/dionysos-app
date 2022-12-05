@@ -30,15 +30,6 @@ user_second = User.new(first_name: "Julien",
   admin: true)
 user_second.save!
 
-user_third = User.new(first_name: "Adrien",
-  last_name: "Meco",
-  password: "azerty",
-  email: "jul@gmail.com",
-  phone_number: "0678273867",
-  address: "21 rue Haxo",
-  admin: true)
-user_third.save!
-
 event_first = Event.new(start_date: DateTime.new(2022,2,3,4,5,6),
                         end_date: DateTime.new(2023,2,3,4,5,6),
                         category: "Wedding",

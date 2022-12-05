@@ -1,59 +1,100 @@
 <div class="container">
-
-  <%= cl_image_tag @event.photo.key, width: 1305, height: 345, crop: :fill, class: "banner" %>
+  <% if @event.photo.attached? %>
+    <%= cl_image_tag @event.photo.key, width: 1305, height: 345, crop: :fill, class: "banner" %>
+    <% else %>
+    <h1>penser à rajouter une image par défaut</h1>
+  <% end %>
   <div class="wrapper">
     <div class="left-container">
       <h5 class="--black-big"><%= @event.start_date.strftime("Le %d/%m/%Y à %H:%M") %></h5>
       <h1><%= @event.title %></h1>
-      <%= link_to "Envoyer des invitations", new_event_invitation_path(@event), class:"primary-orange-button" %>
-      <br>
-      <br>
-      <%= link_to "Ajouter une nouvelle dépense", new_event_spending_path(@event), class:"primary-orange-button" %>
-      <br>
-      <br>
-      <%= link_to "Voir mes invités", event_invitations_path(@event), class:"primary-orange-button" %>
+      <div class="info-container">
+        <div class="d-flex align-items-center">
+          <div>
+            <i class="fa-solid fa-clock landing-icon icon-size"></i>
+          </div>
+          <div class="text-icon">
+            <h5 class="--black">Date & Heure</h5>
+            <p><%= @event.start_date.strftime("Le %d/%m/%Y à %H:%M") %></p>
+          </div>
+        </div>
+        <div class="line"></div>
+        <div class="d-flex align-items-center">
+          <div>
+            <i class="fa-solid fa-compass landing-icon icon-size"></i>
+          </div>
+          <div class="text-icon">
+            <h5 class="--black">Lieu</h5>
+            <p><%= @event.address %></p>
+          </div>
+        </div>
+      </div>
 
-      <% if @event.budget.nil? %>
-        <%= link_to "Définir un nouveau budget", new_event_budget_path(@event), class:"primary-orange-button" %>
-      <% else %>
-        <%= link_to "Mettre à jour mon budget initial", edit_event_budget_path(@event), class:"primary-orange-button" %>
-        <br>
-        <br>
-        <h2>Budget initial : <%= @event.budget.initial_budget %></h2>
-        <h2>Budget restant : <%= @event.budget.remaining_budget %></h2>
-      <% end %>
+      <h2>Finances</h2>
+      <div class="finance-div">
+        <div class="budget-side">
+          <h5 class="--black-big">Budget total : <%= @event.budget.initial_budget %>€</h5>
+          <% if @event.budget.nil? %>
+            <%= link_to "Définir un budget", new_event_budget_path(@event), class:"primary-orange-button" %>
+          <% else %>
+            <%= link_to "Mettre à jour mon budget initial", edit_event_budget_path(@event), class:"primary-orange-button" %>
+          <br>
+          <br>
+          <% end %>
+        </div>
+        <div class="chart" data-controller= "collapse-spending">
+          <div class="d-flex">
+            <h5 class="--black-big">Budget restant : <%= @event.budget.remaining_budget %>€</h5>
+            <button type="button" class="collapsible" data-action="click->collapse-spending#displayList" ><i class="fa-solid fa-caret-down"></i></button>
+          </div>
+          <div class="content" data-collapse-spending-target="list">
+            <ul class="list-group">
+              <% @event.spendings.each do |spending| %>
+              <li class="list-group-item">
+                <%= spending.category %> =
+                <%= spending.amount %>€
+                <%= @event.start_date.strftime("le %d/%m/%Y à %H:%M") %>
+              </li>
+              <% end %>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <h2>A propos de cet événement</h2>
+      <p><%= @event.description %></p>
+
+      <h2>Album de l'événement</h2>
+      <div class="album-section">
+            <% @event.albums.each do |album| %>
+              <% album.photos.each_with_index do |photo, index| %>
+                <%= cl_image_tag photo.key %>
+              <% end %>
+            <% end %>
+      </div>
     </div>
 
     <div class="right-container">
       <div class="gestion-card">
         <h2>Gestion de </br> l'événement</h2>
         <p>Générale</p>
-        <a href="" class="large-orange-button">Modifier l'événement</a>
+        <%= link_to "Modifier l'événement", edit_event_path(@event.id), class:"large-light-orange-button" %>
+        <%= link_to "Envoyer des invitations", new_event_invitation_path(@event), class:"large-orange-button" %>
+        <%= link_to "Voir mes invités", event_invitations_path(@event), class:"large-grey-button" %>
+
         <p>Finances</p>
-        <a href="" class="large-orange-button">Ajouter une dépense</a>
-        <a href="" class="large-grey-button">Ajouter une dépense</a>
+        <%= link_to "Ajouter une dépense", new_event_spending_path(@event), class:"large-orange-button" %>
+        <p>Album</p>
+        <%= link_to "Ajouter une photo", new_event_album_path(@event.id), class:"large-orange-button" %>
+        <%= link_to "Voir l'album", photos_event_path(@event.id), class:"large-grey-button" %>
       </div>
     </div>
   </div>
-
-
-  <p><%= @event.address %></p>
-  <p><%= @event.category %></p>
-  <p><%= @event.description %></p>
-  <p>Date de début : <%= @event.start_date.strftime("le %d/%m/%Y à %H:%M")%></p>
-  <p>Date de fin : <%= @event.end_date.strftime("le %d/%m/%Y à %H:%M")%></p>
-  <%= link_to "Modifier l'événement", edit_event_path(@event.id), class:"primary-orange-button" %>
-  <br>
-  <br>
-  <%= link_to "Voir l'album de l'évenement", photos_event_path(@event.id), class:"primary-orange-button" %>
-  <br>
-  <br>
-  <%= link_to "Ajouter une photo à l'album", new_event_album_path(@event.id), class:"primary-orange-button" %>
 </div>
 
-<%  if @invitation %>
+<% if @invitation %>
   <%= simple_form_for [@event, @invitation] do |f| %>
     <%= f.input :status, label: 'Je participe' %>
     <%= f.submit %>
+    <%= flash.now[:notice] = "#{@event.current_user} participe à l'évènement #{@event.title}." %>
   <% end %>
   <% end %>

@@ -4,12 +4,18 @@ class InvitationsController < ApplicationController
   # before_action :set_user, only: [ :show :index ]
 
   def index
+    @invitation.event = @event
     # trombinoscope de tous les invités
-    @event.users
+    # @event = Event.find(params[:event_id])
+    # @invitation = current_user.invitations.find_by(event: @event)
+    if params[:query].present?
+      @invitations = Invitation.global_search(params[:query])
+    else
+      @invitations = Invitation.all
+    end
     # @users = params[:invitation][:user]
     # @user = User.find(params[:user_id])
     # @invitation = Invitation.find(params[:id])
-    @invitation = current_user.invitations.find_by(event: @event)
   end
 
   def show

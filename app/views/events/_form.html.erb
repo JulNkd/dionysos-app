@@ -8,7 +8,7 @@
     <%= f.input :end_date, label: "Sélectionnez la date et l'heure de fin de votre évènement", as: :string, input_html: { class: "range_end"} %>
     <%= f.input :description, label: "Description" %>
     <%= f.input :photo, as: :file, label: "Image" %>
-    <div class="button-centered"><%= f.submit class:"primary-orange-button" %>
+    <div class="button-centered"><input type="submit" name="commit" value="Créer votre évènement" class="primary-orange-button-forms" data-disable-with="Create Event">
   <% end %>
 </div>
 </div>
