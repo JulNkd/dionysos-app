@@ -15,5 +15,15 @@ const initFlatpickr = () => {
     // maxDate: new Date().fp_incr(31),
     // inline: true,
   });
+  flatpickr(".date_spending", {
+    allowInput: true,
+    dateFormat: "d-m-Y",
+    minDate: "today"
+  });
 }
 export { initFlatpickr };
+
+// const initFlatpickrSpending = () => {
+
+// }
+// export { initFlatpickrSpending };

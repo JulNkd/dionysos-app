@@ -7,4 +7,8 @@ class User < ApplicationRecord
   has_many :invitations
   has_many :events
   has_many :albums
+
+  def full_name
+    "#{self.first_name} #{self.last_name}"
+  end
 end
