@@ -1,0 +1,62 @@
+<<<<<<< HEAD
+<div class="container-new">
+  <div>
+    <h1>Evénements</h1>
+  </div>
+  <div class="d-flex justify-content-between">
+    <h3>Mes événements</h3>
+    <%= link_to "Créer un événement", new_event_path, class:"primary-orange-button" %>
+  </div>
+  <table class="w-100">
+    <thead>
+      <tr class="column-names">
+        <th scope="col">Evénement</th>
+        <th scope="col">Invités</th>
+        <th scope="col">Budget</th>
+        <th scope="col">Statut</th>
+      </tr>
+    </thead>
+    <tbody>
+    <% @events.each do |event| %>
+      <tr>
+        <td scope="row" class="d-flex">
+          <div>
+            <% if event.photo.attached? %>
+              <%= cl_image_tag event.photo.key, width: 90, height: 90, crop: :fill, class:"rounded" %>
+            <% else %>
+            <% end %>
+          </div>
+          <div class="table-event-name">
+            <%= event.title %>
+            <br>
+            <%= event.start_date.strftime("%d" + "." + "%m" + "." +"%Y") %>
+            <br>
+            <%= link_to "Gérer l'événement", event_path(event) %>
+          </div>
+        </td>
+        <td>
+          <% if event.invitations.present? %>
+            <%= event.invitations.length %>
+          <% else %>
+            <%= "-" %>
+          <% end %>
+        </td>
+        <td>
+          <% if event.budget.present?%>
+            <%= event.budget.initial_budget %>
+          <% else %>
+            <%= "-" %>
+          <% end %>
+        </td>
+      </tr>
+      <% end %>
+    </tbody>
+  </table>
+  <h2>Mes invitations</h2>
+  <%= @invitations.each do |invitation| %>
+    <%= invitation.event.title %>
+  <% end %>
+</div>
+=======
+<%= @user.first_name %>
+>>>>>>> bdada3620f958c65d1ab389793173ede2e845bfc

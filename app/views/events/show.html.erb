@@ -1,6 +1,9 @@
 <div class="container">
-
-  <%= cl_image_tag @event.photo.key, width: 1305, height: 345, crop: :fill, class: "banner" %>
+  <% if @event.photo.attached? %>
+    <%= cl_image_tag @event.photo.key, width: 1305, height: 345, crop: :fill, class: "banner" %>
+    <% else %>
+    <h1>penser à rajouter une image par défaut</h1>
+  <% end %>
   <div class="wrapper">
     <div class="left-container">
       <h5 class="--black-big"><%= @event.start_date.strftime("Le %d/%m/%Y à %H:%M") %></h5>
