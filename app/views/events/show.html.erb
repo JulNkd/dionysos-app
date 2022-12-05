@@ -54,9 +54,10 @@
   <%= link_to "Ajouter une photo à l'album", new_event_album_path(@event.id), class:"primary-orange-button" %>
 </div>
 
-<%  if @invitation %>
+<% if @invitation %>
   <%= simple_form_for [@event, @invitation] do |f| %>
     <%= f.input :status, label: 'Je participe' %>
     <%= f.submit %>
+    <%= flash.now[:notice] = "#{@event.current_user} participe à l'évènement #{@event.title}." %>
   <% end %>
   <% end %>
