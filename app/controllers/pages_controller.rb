@@ -3,4 +3,9 @@ class PagesController < ApplicationController
 
   def home
   end
+
+  def profile
+    @events = current_user.events
+    @invitations = current_user.invitations
+  end
 end
