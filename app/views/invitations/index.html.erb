@@ -1,27 +1,37 @@
-<%= form_with url: event_invitations_path, method: :get, class: "form-banner" do %>
+<div class="container">
+<h1>Mes invités</h1>
+
+<%= form_with url: event_invitations_path, method: :get do %>
    <%= text_field_tag :query,
     params[:query],
-    class: "banner-input p-1",
+    class: "search-input",
     placeholder: "Rechercher un invité"
     %>
   <button class="main-btn" type="submit">
     <i class="fa-solid fa-magnifying-glass"></i>
   </button>
   <% end %>
-
-
-<ul>
-  <% @invitations.each do |invitation| %>
-    <li>
-        <%= invitation.user.first_name %>
-        <%= invitation.user.last_name %>
-      <% if invitation.status == true %>
-        <%= 'Participe' %>
-          <% elsif invitation.status == false %>
-        <%= 'Ne participe pas' %>
-          <% elsif %>
-        <%= 'En attente de réponse' %>
-    </li>
-     <% end %>
-<% end %>
-</ul>
+  <div class="all-invited">
+      <% @invitations.each do |invitation| %>
+        <%# <%= cl_image_tag invitation.user.photo.key, gravity: :faces, crop: :thumb, class: "avatar-big-index" %>
+    <div class="invited-avatars">
+      <% if current_user.photo.attached? %>
+              <%= cl_image_tag avatar.photo.key, class:"avatar-big-index"%>
+            <% else %>
+              <img class="avatar-big-index" src="https://kitt.lewagon.com/placeholder/users/krokrob">
+            <% end %>
+            <div class="name-status">
+            <p><%= invitation.user.first_name %>
+            <%= invitation.user.last_name %><br>
+          <% if invitation.status == true %>
+            <%= 'Participe' %>
+              <% elsif invitation.status == false %>
+            <%= 'Ne participe pas' %>
+              <% elsif %>
+            <%= 'En attente de réponse' %></p>
+            </div>
+    </div>
+        <% end %>
+    <% end %>
+  </div>
+</div>
