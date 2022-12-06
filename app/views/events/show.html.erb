@@ -38,19 +38,23 @@ data-map-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>">
       <h2>Finances</h2>
       <div class="finance-div">
         <div class="budget-side">
-          <h5 class="--black-big">Budget total : <%= @event.budget.initial_budget %>€</h5>
-          <% if @event.budget.nil? %>
-            <%= link_to "Définir un budget", new_event_budget_path(@event), class:"primary-orange-button" %>
-          <% else %>
-            <%= link_to "Mettre à jour mon budget initial", edit_event_budget_path(@event), class:"primary-orange-button" %>
+          <% if @event.budget.present?%>
+            <h5 class="--black-big">Budget total : <%= @event.budget.initial_budget %>€</h5>
+            <% if @event.budget.nil? %>
+              <%= link_to "Définir un budget", new_event_budget_path(@event), class:"primary-orange-button" %>
+            <% else %>
+              <%= link_to "Mettre à jour mon budget initial", edit_event_budget_path(@event), class:"primary-orange-button" %>
+          <% end %>
           <br>
           <br>
           <% end %>
         </div>
         <div class="chart" data-controller= "collapse-spending">
           <div class="d-flex">
-            <h5 class="--black-big">Budget restant : <%= @event.budget.remaining_budget %>€</h5>
-            <button type="button" class="collapsible" data-action="click->collapse-spending#displayList" ><i class="fa-solid fa-caret-down"></i></button>
+            <% if @event.budget.present?%>
+              <h5 class="--black-big">Budget restant : <%= @event.budget.remaining_budget %>€</h5>
+              <button type="button" class="collapsible" data-action="click->collapse-spending#displayList" ><i class="fa-solid fa-caret-down"></i></button>
+            <% end %>
           </div>
           <div class="content" data-collapse-spending-target="list">
             <ul class="list-group">
