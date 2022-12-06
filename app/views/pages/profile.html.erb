@@ -1,4 +1,4 @@
-<div class="container-new">
+<div class="container">
   <div class="d-flex justify-content-between">
     <h1>Mon profil</h1>
     <div class="d-flex align-items-center"><%= link_to "Créer un événement", new_event_path, class:"primary-orange-button" %>
@@ -99,6 +99,7 @@
           </td>
           <td>
             <% if DateTime.now >= invitation.event.start_date %>
+
               <%= "Passé" %>
             <% else %>
               <%= "A venir" %>
