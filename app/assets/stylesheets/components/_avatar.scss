@@ -1,8 +1,10 @@
 .avatar {
-  width: 40px;
-  height: 40px;
+  width: 48px;
+  height: auto;
   border-radius: 50%;
   cursor:pointer;
+  border: solid;
+  border-color: #0D1B23;
 }
 .avatar-large {
   width: 56px;
