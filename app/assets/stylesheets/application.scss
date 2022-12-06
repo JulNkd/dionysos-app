@@ -16,3 +16,12 @@
 @import "pages/show";
 @import "pages/photos";
 @import "pages/index_invitations";
+
+abbr {
+  display: none;
+}
+
+.form-check-input:checked {
+  background-color: #FF5D29;
+  border-color: #0D6EFD;
+}
