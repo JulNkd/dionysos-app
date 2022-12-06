@@ -28,27 +28,37 @@
             <p><%= @event.address %></p>
           </div>
         </div>
-        </div>
+      </div>
       <div class= "style"
-data-controller="map"
-data-map-marker-value="<%= @marker.to_json %>"
-data-map-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>">
-</div>
+      data-controller="map"
+      data-map-marker-value="<%= @marker.to_json %>"
+      data-map-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>">
+      </div>
 
+      <% if @event.budget.present?%>
       <h2>Finances</h2>
       <div class="finance-div">
         <div class="budget-side">
-          <% if @event.budget.present?%>
+          <div class="d-flex align-items-center">
+          <div>
+            <i class="fa-solid fa-coins landing-icon icon-size"></i>
+          </div>
+          <div class="text-icon">
             <h5 class="--black-big">Budget total : <%= @event.budget.initial_budget %>€</h5>
-            <% if @event.budget.nil? %>
-              <%= link_to "Définir un budget", new_event_budget_path(@event), class:"primary-orange-button" %>
-            <% else %>
-              <%= link_to "Mettre à jour mon budget initial", edit_event_budget_path(@event), class:"primary-orange-button" %>
-          <% end %>
-          <br>
-          <br>
-          <% end %>
+            <%= link_to "Mettre à jour mon budget initial", edit_event_budget_path(@event), class:"primary-orange-button" %>
+          </div>
         </div>
+          <br>
+          <br>
+        <% else %>
+        <div class="finance-div">
+        <div class="budget-side">
+            <h5></h5>
+          <br>
+          <br>
+        <% end %>
+        </div>
+        <% if @event.spendings.present? %>
         <div class="chart" data-controller= "collapse-spending">
           <div class="d-flex">
             <% if @event.budget.present?%>
@@ -62,14 +72,20 @@ data-map-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>">
               <li class="list-group-item">
                 <%= spending.category %> =
                 <%= spending.amount %>€
-                <%= @event.start_date.strftime("le %d/%m/%Y à %H:%M") %>
+                <%= @event.start_date.strftime("le %d/%m/%Y") %>
               </li>
               <% end %>
             </ul>
           </div>
         </div>
+        <% else %>
+        <div class="chart" data-controller= "collapse-spending">
+          <div class="d-flex">
+          </div>
+        </div>
+        <% end %>
       </div>
-      <h2>A propos de cet événement</h2>
+      <h2>À propos de cet événement</h2>
       <p><%= @event.description %></p>
 
       <h2>Album de l'événement</h2>
@@ -81,22 +97,30 @@ data-map-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>">
             <% end %>
       </div>
     </div>
-
-    <div class="right-container">
+   <div class="right-container">
       <div class="gestion-card">
         <h2>Gestion de </br> l'événement</h2>
-        <p>Générale</p>
+        <p>Général</p>
         <%= link_to "Modifier l'événement", edit_event_path(@event.id), class:"large-light-orange-button" %>
         <%= link_to "Envoyer des invitations", new_event_invitation_path(@event), class:"large-orange-button" %>
         <%= link_to "Voir mes invités", event_invitations_path(@event), class:"large-grey-button" %>
 
         <p>Finances</p>
-        <%= link_to "Ajouter une dépense", new_event_spending_path(@event), class:"large-orange-button" %>
+        <% if @event.budget.present? %>
+          <%= link_to "Ajouter une dépense", new_event_spending_path(@event), class:"large-orange-button" %>
+        <% else %>
+          <%= link_to "Ajouter un budget", new_event_budget_path(@event), class:"large-orange-button" %>
+        <% end %>
         <p>Album</p>
-        <%= link_to "Ajouter une photo", new_event_album_path(@event.id), class:"large-orange-button" %>
-        <%= link_to "Voir l'album", photos_event_path(@event.id), class:"large-grey-button" %>
+        <% if @event.albums.present? %>
+          <%= link_to "Ajouter une photo", new_event_album_path(@event.id), class:"large-orange-button" %>
+          <%= link_to "Voir l'album", photos_event_path(@event.id), class:"large-grey-button" %>
+        <% else %>
+          <%= link_to "Créer un album", new_event_album_path(@event.id), class:"large-orange-button" %>
+        <% end %>
       </div>
     </div>
+
   </div>
 </div>
 
