@@ -91,11 +91,11 @@ button {
 .album-section {
   display: flex;
   flex-wrap: wrap;
-  object-fit: cover;
   img {
-    width: 250px;
-    height: 150px;
+    width: 240px;
+    height: 180px;
     margin: 4px;
     border-radius: 6px;
+    object-fit: cover;
   }
 }

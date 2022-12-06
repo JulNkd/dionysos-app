@@ -26,6 +26,7 @@ h1 {
   line-height: 60px;
   letter-spacing: -0.025em;
   color: #252525;
+  line-height: 1;
 }
 
 h2 {
@@ -40,10 +41,13 @@ h2 {
 h3 {
   font-family: 'Crimson Pro', serif;
   font-weight: 600;
-  font-size: 64px;
+  font-size: 48px;
   line-height: 60px;
   color: #CCEBFF;
   letter-spacing: -0.025em;
+  &.--number {
+    font-size: 80px;
+  }
 }
 
 h4 {

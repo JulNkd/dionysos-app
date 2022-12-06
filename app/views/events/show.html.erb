@@ -66,10 +66,15 @@
       <h2>Album de l'événement</h2>
       <div class="album-section">
             <% @event.albums.each do |album| %>
-              <% album.photos.each_with_index do |photo, index| %>
+              <% album.photos.each do |photo| %>
+              <% if photo %>
                 <%= cl_image_tag photo.key %>
               <% end %>
+              <% end %>
             <% end %>
+      </div>
+      <div class="d-flex justify-content-center">
+        <%= link_to "Ajouter une photo", new_event_album_path(@event.id), class:"primary-orange-button" %>
       </div>
     </div>
 
@@ -84,7 +89,6 @@
         <p>Finances</p>
         <%= link_to "Ajouter une dépense", new_event_spending_path(@event), class:"large-orange-button" %>
         <p>Album</p>
-        <%= link_to "Ajouter une photo", new_event_album_path(@event.id), class:"large-orange-button" %>
         <%= link_to "Voir l'album", photos_event_path(@event.id), class:"large-grey-button" %>
       </div>
     </div>
