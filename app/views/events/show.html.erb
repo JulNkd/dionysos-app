@@ -28,24 +28,33 @@
             <p><%= @event.address %></p>
           </div>
         </div>
-      </div>
+        </div>
+      <div class= "style"
+data-controller="map"
+data-map-marker-value="<%= @marker.to_json %>"
+data-map-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>">
+</div>
 
       <h2>Finances</h2>
       <div class="finance-div">
         <div class="budget-side">
-          <h5 class="--black-big">Budget total : <%= @event.budget.initial_budget %>€</h5>
-          <% if @event.budget.nil? %>
-            <%= link_to "Définir un budget", new_event_budget_path(@event), class:"primary-orange-button" %>
-          <% else %>
-            <%= link_to "Mettre à jour mon budget initial", edit_event_budget_path(@event), class:"primary-orange-button" %>
+          <% if @event.budget.present?%>
+            <h5 class="--black-big">Budget total : <%= @event.budget.initial_budget %>€</h5>
+            <% if @event.budget.nil? %>
+              <%= link_to "Définir un budget", new_event_budget_path(@event), class:"primary-orange-button" %>
+            <% else %>
+              <%= link_to "Mettre à jour mon budget initial", edit_event_budget_path(@event), class:"primary-orange-button" %>
+          <% end %>
           <br>
           <br>
           <% end %>
         </div>
         <div class="chart" data-controller= "collapse-spending">
           <div class="d-flex">
-            <h5 class="--black-big">Budget restant : <%= @event.budget.remaining_budget %>€</h5>
-            <button type="button" class="collapsible" data-action="click->collapse-spending#displayList" ><i class="fa-solid fa-caret-down"></i></button>
+            <% if @event.budget.present?%>
+              <h5 class="--black-big">Budget restant : <%= @event.budget.remaining_budget %>€</h5>
+              <button type="button" class="collapsible" data-action="click->collapse-spending#displayList" ><i class="fa-solid fa-caret-down"></i></button>
+            <% end %>
           </div>
           <div class="content" data-collapse-spending-target="list">
             <ul class="list-group">
@@ -95,10 +104,10 @@
   </div>
 </div>
 
-<% if @invitation %>
-  <%= simple_form_for [@event, @invitation] do |f| %>
-    <%= f.input :status, label: 'Je participe' %>
-    <%= f.submit %>
-    <%= flash.now[:notice] = "#{@event.current_user} participe à l'évènement #{@event.title}." %>
-  <% end %>
-  <% end %>
+<%# <% if @invitation %>
+  <%# <%= simple_form_for [@event, @invitation] do |f| %>
+    <%# <%= f.input :status, label: 'Je participe' %>
+    <%# <%= f.submit %>
+    <%# <%= flash[:notice] = "#{@event.current_user} participe à l'évènement #{@event.title}." %>
+  <%# <% end %>
+  <%# <% end %>
