@@ -1,7 +1,7 @@
 <div class="container">
-<h1>Mes invités</h1>
+  <h1>Mes invités</h1>
 
-<%= form_with url: event_invitations_path, method: :get do %>
+  <%= form_with url: event_invitations_path, method: :get do %>
    <%= text_field_tag :query,
     params[:query],
     class: "search-input",
@@ -11,6 +11,36 @@
     <i class="fa-solid fa-magnifying-glass"></i>
   </button>
   <% end %>
+  <div class= "invites-container">
+    <div class="info-card d-flex align-items-center">
+        <div>
+          <i class="fa-solid fa-user-group landing-icon icon-size"></i>
+        </div>
+        <div class="text-icon">
+          <h5 class="--black">Nombre d'invités :</h5>
+            <H5><%= @event.invitations.count%></H5>
+        </div>
+    </div>
+    <div class="info-card d-flex align-items-center">
+        <div>
+          <i class="fa-solid fa-user-check landing-icon icon-size"></i>
+        </div>
+        <div class="text-icon">
+          <h5 class="--black">Total présents: </h5>
+      <H5><%= @event.invitations.where(status: true).count%></H5>
+        </div>
+    </div>
+    <div class="info-card d-flex align-items-center">
+        <div>
+          <i class="fa-solid fa-user-clock landing-icon icon-size"></i>
+        </div>
+        <div class="text-icon">
+          <h5 class="--black">En attente de réponse : </h5>
+      <H5><%= @event.invitations.where(status: nil).count%></H5>
+        </div>
+    </div>
+  </div>
+
   <div class="all-invited">
       <% @invitations.each do |invitation| %>
         <%# <%= cl_image_tag invitation.user.photo.key, gravity: :faces, crop: :thumb, class: "avatar-big-index" %>
