@@ -6,6 +6,7 @@
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
+  margin-top: 12px;
 }
 
 .invited-avatars {
@@ -20,17 +21,21 @@
 }
 
 .search-input {
-  border: 1px solid #D9D9D9;
+  border: 1px solid #b0b0b0;
   border-radius: 6px;
   width: 270px;
   height: 34px;
   outline: none !important;
 }
 
+::placeholder {
+  color: #b0b0b0;
+}
+
 .main-btn {
   border: none;
   text-decoration: none;
-  color: #D9D9D9;
+  color: #b0b0b0;
   border-radius: 6px;
   height: 34px;
   width: 34px;
@@ -46,4 +51,10 @@
 
 .invites-container {
   display: flex;
+  justify-content: space-between;
+  margin-top: 12px;
+}
+
+.search-bar {
+  margin-top: 12px;
 }
