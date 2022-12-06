@@ -5,9 +5,10 @@ class InvitationsController < ApplicationController
   # before_action :set_user, only: [ :show :index ]
 
   def index
-    @invitation.event = @event
-    # trombinoscope de tous les invités
     # @event = Event.find(params[:event_id])
+    # @invitations = @event.invitations
+    # trombinoscope de tous les invités
+    # @event = Event.find(params[@<q@&é:event_id])
     # @invitation = current_user.invitations.find_by(event: @event)
     if params[:query].present?
       @invitations = Invitation.global_search(params[:query])
@@ -49,8 +50,8 @@ class InvitationsController < ApplicationController
       @user = User.find_by(first_name: selected)
       @invitation.user = @user
       @invitation.event = @event
-      send_sms_to_contact
-      if @invitation.save
+      if @invitation.save!
+        send_sms_to_contact
       end
     end
     redirect_to event_path(@event)
@@ -78,6 +79,6 @@ class InvitationsController < ApplicationController
   end
 
   def invitations_params
-    params.require(:invitation).permit(:user_id, :status, :partner, :comment)
+    params.require(:invitation).permit(:status, :partner, :comment)
   end
 end

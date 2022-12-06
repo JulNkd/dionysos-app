@@ -16,7 +16,7 @@
         <%# <%= cl_image_tag invitation.user.photo.key, gravity: :faces, crop: :thumb, class: "avatar-big-index" %>
     <div class="invited-avatars">
       <% if current_user.photo.attached? %>
-              <%= cl_image_tag avatar.photo.key, class:"avatar-big-index"%>
+              <%= cl_image_tag current_user.photo.key, class:"avatar-big-index" %>
             <% else %>
               <img class="avatar-big-index" src="https://kitt.lewagon.com/placeholder/users/krokrob">
             <% end %>
@@ -35,10 +35,3 @@
     <% end %>
   </div>
 </div>
-<% if @event.user.status = true %>
-<% @event.users.each do |user|%>
-  <%# <%= link_to event_invitation_path %>
-  <%= user.first_name %>
-  <%= user.last_name %>
-<% end %>
-<% end %>
