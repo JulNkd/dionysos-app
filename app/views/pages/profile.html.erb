@@ -1,16 +1,28 @@
 <div class="container">
-  <div class="d-flex justify-content-between">
-    <h1>Mon profil</h1>
+  <div class="d-flex justify-content-between mt-5 align-items-end mb-3">
+    <div>
+      <h2>Mes événements</h2>
+      <div class= "search-bar"><%= form_with url: profile_path, method: :get do %>
+      <%= text_field_tag :query,
+      params[:query],
+      class: "search-input",
+      placeholder: "Rechercher un événement"%>
+      <button class="main-btn" type="submit">
+      <i class="fa-solid fa-magnifying-glass"></i>
+      </button>
+      <% end %>
+    </div>
+  </div>
     <div class="d-flex align-items-center"><%= link_to "Créer un événement", new_event_path, class:"primary-orange-button" %>
     </div>
   </div>
   <table class="w-100">
     <thead>
       <tr class="column-names">
-        <th scope="col" class= "border-event-left"><span class="table-titles">Mes événements</span></th>
-        <th scope="col">Invités</th>
-        <th scope="col">Budget</th>
-        <th scope="col" class="border-event-right">Statut</th>
+        <th scope="col" class= "border-event-left"><span class="table-titles">Evénements</span></th>
+        <th scope="col" class="text-center">Invités</th>
+        <th scope="col" class="text-center">Budget</th>
+        <th scope="col" class="border-event-right text-center">Statut</th>
       </tr>
     </thead>
     <tbody class="event-content-profile">
@@ -19,7 +31,7 @@
         <td scope="row" class="d-flex row-table m-3">
           <div>
             <% if event.photo.attached? %>
-              <%= cl_image_tag event.photo.key, width: 125, height: 125, crop: :fill, radius: 8, class:"p-1" %>
+              <%= cl_image_tag event.photo.key, width: 125, height: 125, crop: :fill, radius: 8 %>
             <% else %>
             <% end %>
           </div>
@@ -35,21 +47,21 @@
             </div>
           </div>
         </td>
-        <td>
+        <td class="text-center">
           <% if event.invitations.present? %>
             <%= event.invitations.length %>
           <% else %>
             <%= "-" %>
           <% end %>
         </td>
-        <td>
+        <td class="text-center">
           <% if event.budget.present?%>
             <%= event.budget.initial_budget %>€
           <% else %>
             <%= "-" %>
           <% end %>
         </td>
-        <td>
+        <td class="text-center">
           <% if DateTime.now >= event.start_date %>
             <%= "Passé" %>
           <% else %>
@@ -60,12 +72,24 @@
       <% end %>
     </tbody>
   </table>
-  <table class="w-100 my-5">
+  <div>
+    <h2 class="mt-5">Invitations reçues</h2>
+    <div class= "search-bar mb-3"><%= form_with url: profile_path, method: :get do %>
+    <%= text_field_tag :query,
+    params[:query],
+    class: "search-input",
+    placeholder: "Rechercher un événement"%>
+    <button class="main-btn" type="submit">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    </button>
+    <% end %>
+  </div>
+  <table class="w-100 mb-5">
     <thead>
       <tr class="column-names">
-        <th scope="col" class= "border-event-left"><span class="table-titles">Mes invitations</span></th>
-        <th scope="col">Invités</th>
-        <th scope="col" class="border-event-right">Statut</th>
+        <th scope="col" class= "border-event-left"><span class="table-titles">Evénements</span></th>
+        <th scope="col" class="text-center">Invités</th>
+        <th scope="col" class="border-event-right text-center">Statut</th>
       </tr>
     </thead>
     <tbody class="event-content-profile">
@@ -74,7 +98,7 @@
           <td scope="row" class="d-flex row-table m-3">
             <div>
               <% if invitation.event.photo.attached? %>
-                <%= cl_image_tag invitation.event.photo.key, width: 125, height: 125, crop: :fill, radius: 8, class:"p-1" %>
+                <%= cl_image_tag invitation.event.photo.key, width: 125, height: 125, crop: :fill, radius: 8 %>
               <% else %>
               <% end %>
             </div>
@@ -90,14 +114,14 @@
               </div>
             </div>
           </td>
-          <td>
+          <td class="text-center">
             <% if invitation.event.invitations.present? %>
               <%= invitation.event.invitations.length %>
             <% else %>
               <%= "-" %>
             <% end %>
           </td>
-          <td>
+          <td class="text-center">
             <% if DateTime.now >= invitation.event.start_date %>
 
               <%= "Passé" %>
