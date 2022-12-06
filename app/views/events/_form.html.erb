@@ -3,7 +3,10 @@
 <%= simple_form_for(event) do |f| %>
     <%= f.input :title, label: "Nom de l'évènement" %>
     <%= f.input :category, label: "Catégorie de l'évènement", collection: ["Anniversaire", "Mariage", "Baptême", "Fête", "Autre"] %>
-    <%= f.input :address, label: "Lieu de l'évènement" %>
+    <%= f.input :address, label: "Adresse",
+                input_html: {data: {address_autocomplete_target: "address"}, class: "d-none"},
+                wrapper_html: {data: {controller: "address-autocomplete", address_autocomplete_api_key_value: ENV["MAPBOX_API_KEY"]}}
+                %>
     <%= f.input :start_date, label: "Sélectionnez la date et l'heure de début de votre évènement", as: :string, input_html: { class: "range_start"} %>
     <%= f.input :end_date, label: "Sélectionnez la date et l'heure de fin de votre évènement", as: :string, input_html: { class: "range_end"} %>
     <%= f.input :description, label: "Description" %>

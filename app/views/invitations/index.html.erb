@@ -35,10 +35,3 @@
     <% end %>
   </div>
 </div>
-<% if @event.user.status = true %>
-<% @event.users.each do |user|%>
-  <%# <%= link_to event_invitation_path %>
-  <%= user.first_name %>
-  <%= user.last_name %>
-<% end %>
-<% end %>

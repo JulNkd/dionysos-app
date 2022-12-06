@@ -17,6 +17,11 @@ class EventsController < ApplicationController
     @event = Event.find(params[:id])
     # @invitation = current_user.invitations.find_by(event: @event)
     @invitation = current_user.invitations.find_by(event: @event)
+    @marker =
+      {
+        lat: @event.latitude,
+        lng: @event.longitude
+      }
   end
 
   def edit
