@@ -47,7 +47,7 @@ class InvitationsController < ApplicationController
     @users = params[:invitation][:user]
     @users.each do |selected|
       @invitation = Invitation.new(invitations_params)
-      @user = User.find_by(first_name: selected)
+      @user = User.find_by(selected)
       @invitation.user = @user
       @invitation.event = @event
       if @invitation.save!
@@ -79,6 +79,6 @@ class InvitationsController < ApplicationController
   end
 
   def invitations_params
-    params.require(:invitation).permit(:status, :partner, :comment)
+    params.require(:invitation).permit(:user_id, :status, :partner, :comment)
   end
 end
