@@ -11,7 +11,7 @@
 .table-event-name{
   display: flex;
   flex-direction: column;
-  align-items: center;
+  justify-content: space-evenly;
 }
 
 .event-content-profile{
@@ -29,12 +29,20 @@
   border-top: 1px solid rgba(0, 0, 0, 0.25);
 }
 
-.row-table{
-  padding-left: 16px;
+.text-event{
+  margin-left:12px;
+}
+.icone-event{
+  color:black;
 }
 
 .event-title{
-  font-weight:bold;
+  font-weight:600;
+  margin-bottom: 0px;
+}
+
+.event-date{
+  margin:0px
 }
 
 // .table-titles {

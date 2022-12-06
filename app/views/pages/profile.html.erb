@@ -16,19 +16,23 @@
     <tbody class="event-content-profile">
       <% @events.each do |event| %>
       <tr class= "row-border">
-        <td scope="row" class="d-flex row-table">
+        <td scope="row" class="d-flex row-table m-3">
           <div>
             <% if event.photo.attached? %>
-              <%= cl_image_tag event.photo.key, width: 70, height: 70, crop: :fill, radius: 8, class:"p-1" %>
+              <%= cl_image_tag event.photo.key, width: 125, height: 125, crop: :fill, radius: 8, class:"p-1" %>
             <% else %>
             <% end %>
           </div>
-          <div class="table-event-name">
-            <%= event.title %>
-            <br>
-            <%= event.start_date.strftime("%d" + "." + "%m" + "." +"%Y") %>
-            <br>
-            <%= link_to "Gérer l'événement", event_path(event) %>
+          <div class="text-event">
+            <div class="table-event-name pl-2">
+              <h5 class="event-title mt-3"><%= event.title %></h5>
+              <p class="event-date"><%= event.start_date.strftime("%d" + "." + "%m" + "." +"%Y") %></p>
+            </div>
+            <div>
+              <%= link_to event_path(event) do %>
+                <i class="fa-solid fa-eye icone-event"></i>
+              <% end %>
+            </div>
           </div>
         </td>
         <td>
@@ -40,7 +44,7 @@
         </td>
         <td>
           <% if event.budget.present?%>
-            <%= event.budget.initial_budget %>
+            <%= event.budget.initial_budget %>€
           <% else %>
             <%= "-" %>
           <% end %>
@@ -67,18 +71,23 @@
     <tbody class="event-content-profile">
       <% @invitations.each do |invitation| %>
         <tr class= "row-border">
-          <td scope="row" class="d-flex row-table">
+          <td scope="row" class="d-flex row-table m-3">
             <div>
               <% if invitation.event.photo.attached? %>
-                <%= cl_image_tag invitation.event.photo.key, width: 70, height: 70, crop: :fill, radius: 8, class:"p-1" %>
+                <%= cl_image_tag invitation.event.photo.key, width: 125, height: 125, crop: :fill, radius: 8, class:"p-1" %>
               <% else %>
               <% end %>
             </div>
-            <div class="table-event-name">
-              <h1></h1><%= invitation.event.title %>
-              <br>
-              <%= invitation.event.start_date.strftime("%d" + "." + "%m" + "." +"%Y") %>
-              <br>
+            <div>
+              <div class="table-event-name">
+                <h5 class="event-title mt-3"><%= invitation.event.title %></h5>
+                <p class="event-date"><%= invitation.event.start_date.strftime("%d" + "." + "%m" + "." +"%Y") %></p>
+              </div>
+              <div>
+                <%= link_to event_path(invitation.event) do %>
+                  <i class="fa-solid fa-eye icone-event"></i>
+                <% end %>
+              </div>
             </div>
           </td>
           <td>
