@@ -5,6 +5,7 @@ ruby "3.1.2"
 
 gem "cloudinary"
 
+gem 'twilio-ruby', "~> 5.6"
 #search gem
 gem "pg_search"
 
