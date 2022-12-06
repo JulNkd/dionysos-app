@@ -2,12 +2,11 @@
   <h1>Mes invités</h1>
 
   <div class= "search-bar"><%= form_with url: event_invitations_path, method: :get do %>
-   <%= text_field_tag :query,
+    <%= text_field_tag :query,
     params[:query],
     class: "search-input",
-    placeholder: "Rechercher un invité"
-    %>
-  <button class="main-btn" type="submit">
+    placeholder: "Rechercher un invité"%>
+    <button class="main-btn" type="submit">
     <i class="fa-solid fa-magnifying-glass"></i>
   </button></div>
   <% end %>
