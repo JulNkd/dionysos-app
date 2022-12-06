@@ -46,12 +46,14 @@ class InvitationsController < ApplicationController
     # @invitation.event = @event
     @users = params[:invitation][:user]
     @users.each do |selected|
-      @invitation = Invitation.new(invitations_params)
-      @user = User.find_by(selected)
-      @invitation.user = @user
-      @invitation.event = @event
-      if @invitation.save!
-        send_sms_to_contact
+      if !selected.empty?
+        @invitation = Invitation.new(invitations_params)
+        @user = User.find(selected)
+        @invitation.user = @user
+        @invitation.event = @event
+        if @invitation.save!
+          send_sms_to_contact
+        end
       end
     end
     redirect_to event_path(@event)
