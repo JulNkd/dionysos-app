@@ -1,10 +1,13 @@
-<div class="form-container-spending">
-<h2 class="title">Ajouter une dépense</h2>
-  <%= simple_form_for [@event, @spending] do |f| %>
-     <%= f.input :amount, label: "Montant" %>
-    <%= f.input :category, label: "Catégorie de l'évènement", collection: ["Traiteur", "Boisson", "Musique", "Salle", "Décoration", "Autre"] %>
-    <%= f.input :date, label: "Date de la dépense", as: :string, input_html: { class: "date_spending"} %>
-    <div class="button-centered"><input type="submit" name="commit" value="Créer une dépense" class="primary-orange-button-forms">
-  <% end %>
+<div class= "background">
+<br>
+  <div class="form-container-spending">
+  <h2 class="title">Ajouter une dépense</h2>
+    <%= simple_form_for [@event, @spending] do |f| %>
+      <%= f.input :amount, label: "Montant", placeholder: "€" %>
+      <%= f.input :category, label: "Catégorie de l'évènement", collection: ["Traiteur", "Boisson", "Musique", "Salle", "Décoration", "Autre"] %>
+      <%= f.input :date, label: "Date de la dépense", as: :string, input_html: { class: "date_spending"} %>
+      <div class="button-centered"><input type="submit" name="commit" value="Créer une dépense" class="primary-orange-button-forms">
+    <% end %>
+    </div>
   </div>
 </div>

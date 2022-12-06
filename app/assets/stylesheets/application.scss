@@ -17,6 +17,15 @@
 @import "pages/photos";
 @import "pages/index_invitations";
 
+abbr {
+  display: none;
+}
+
+.form-check-input:checked {
+  background-color: #FF5D29;
+  border-color: #b0b0b0;
+  outline: none !important;
+
 .main-wrapper {
   min-height: 80vh;
 }
