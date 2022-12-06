@@ -1,12 +1,14 @@
 require 'twilio-ruby'
+
 class InvitationsController < ApplicationController
   before_action :set_event
   # before_action :set_user, only: [ :show :index ]
 
   def index
-    @invitation.event = @event
-    # trombinoscope de tous les invités
     # @event = Event.find(params[:event_id])
+    # @invitations = @event.invitations
+    # trombinoscope de tous les invités
+    # @event = Event.find(params[@<q@&é:event_id])
     # @invitation = current_user.invitations.find_by(event: @event)
     if params[:query].present?
       @invitations = Invitation.global_search(params[:query])
@@ -45,10 +47,10 @@ class InvitationsController < ApplicationController
     @users = params[:invitation][:user]
     @users.each do |selected|
       @invitation = Invitation.new(invitations_params)
-      @user = User.find_by(first_name: selected)
+      @user = User.find_by(selected)
       @invitation.user = @user
       @invitation.event = @event
-      if @invitation.save
+      if @invitation.save!
         send_sms_to_contact
       end
     end
