@@ -17,6 +17,7 @@
   margin: auto;
   // margin-top: 100px;
   // margin-bottom: 100px;
+  padding-bottom: 18px;
   width: 600px;
   display: flex;
   align-items: center;
@@ -51,20 +52,6 @@
 
 #new_spending {
   width: 80%;
-}
-
-.primary-orange-button-forms {
-  background-color: #FF5D29;
-  text-decoration: none;
-  color: white;
-  border-radius: 8px;
-  font-family: 'Barlow';
-  font-weight: 600;
-  transition-duration: 0.4s;
-  font-size: 20px;
-  padding: 12px 20px;
-  border: none;
-  margin-bottom: 20px;
 }
 
 ::placeholder {
