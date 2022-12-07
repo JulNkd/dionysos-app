@@ -9,7 +9,7 @@
   padding: 12px 20px;
 }
 .primary-orange-button:hover {
-  padding:14px 22px;
+  background-color: #ff9774;
   color: white;
   transition-timing-function: ease-in-out;
   transition-duration: 0.3s;
@@ -30,7 +30,10 @@
   margin-bottom: 5px;
 }
 .large-orange-button:hover {
+  background-color: #ff9774;
   color: white;
+  transition-timing-function: ease-in-out;
+  transition-duration: 0.3s;
 }
 
 
@@ -49,6 +52,9 @@
 }
 .large-light-orange-button:hover {
   color: #FF5D29;
+  background-color: #fff0eb;
+  transition-timing-function: ease-in-out;
+  transition-duration: 0.3s;
 }
 
 
@@ -107,6 +113,9 @@
 }
 .large-grey-button:hover {
   color: #252525;
+  background-color: #f5f5f5;
+  transition-timing-function: ease-in-out;
+  transition-duration: 0.2s;
 }
 
 .button-bottom-landing{
