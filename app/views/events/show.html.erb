@@ -44,42 +44,49 @@
             <i class="fa-solid fa-coins landing-icon icon-size"></i>
           </div>
           <div class="text-icon">
-            <h5 class="--black-big">Budget total : <%= @event.budget.initial_budget %>€</h5>
-            <%= link_to "Mettre à jour mon budget initial", edit_event_budget_path(@event), class:"primary-orange-button" %>
+            <h5 class="--black">Budget total : <%= @event.budget.initial_budget %>€</h5>
+            <%= link_to "Mettre à jour mon budget", edit_event_budget_path(@event), class:"primary-orange-button" %>
           </div>
         </div>
-          <br>
-          <br>
         <% else %>
-        <div class="finance-div">
-        <div class="budget-side">
-            <h5></h5>
-          <br>
-          <br>
+          <div class="finance-div">
+          <div class="budget-side d-none">
+              <h5></h5>
+            <br>
+            <br>
         <% end %>
         </div>
         <% if @event.spendings.present? %>
         <div class="chart" data-controller= "collapse-spending">
           <div class="d-flex">
             <% if @event.budget.present?%>
-              <h5 class="--black-big">Budget restant : <%= @event.budget.remaining_budget %>€</h5>
-              <button type="button" class="collapsible" data-action="click->collapse-spending#displayList" ><i class="fa-solid fa-caret-down"></i></button>
+              <div class="d-flex">
+                <div>
+                  <i class="fa-solid fa-wallet landing-icon icon-size"></i>
+                </div>
+                <div class="text-icon flex-column">
+                  <div class="d-flex">
+                    <h5 class="--black">Budget restant : <%= @event.budget.remaining_budget %>€</h5>
+                    <button type="button" class="collapsible" data-action="click->collapse-spending#displayList" ><i class="fa-solid fa-caret-right arrow" data-collapse-spending-target="arrow"></i></button>
+                  </div>
+                  <div class="content" data-collapse-spending-target="list">
+                    <ul class="list-group">
+                      <% @event.spendings.each do |spending| %>
+                      <li class="list-group-item">
+                        <%= spending.category %> =
+                        <%= spending.amount %>€
+                        <%= @event.start_date.strftime("le %d/%m/%Y") %>
+                      </li>
+                      <% end %>
+                    </ul>
+                  </div>
+                </div>
+              </div>
             <% end %>
-          </div>
-          <div class="content" data-collapse-spending-target="list">
-            <ul class="list-group">
-              <% @event.spendings.each do |spending| %>
-              <li class="list-group-item">
-                <%= spending.category %> =
-                <%= spending.amount %>€
-                <%= @event.start_date.strftime("le %d/%m/%Y") %>
-              </li>
-              <% end %>
-            </ul>
           </div>
         </div>
         <% else %>
-        <div class="chart" data-controller= "collapse-spending">
+        <div class="chart d-none" data-controller= "collapse-spending">
           <div class="d-flex">
           </div>
         </div>
@@ -88,19 +95,20 @@
       <h2>À propos de cet événement</h2>
       <p><%= @event.description %></p>
 
-      <h2>Album de l'événement</h2>
-      <div class="album-section">
-            <% @event.albums.each do |album| %>
-              <% album.photos.each do |photo| %>
-              <% if photo %>
-                <%= cl_image_tag photo.key %>
-              <% end %>
-              <% end %>
+      <% if @event.albums.present? %>
+        <h2>Album de l'événement</h2>
+        <div class="album-section">
+          <% @event.albums.each do |album| %>
+            <% album.photos.limit(3).each do |photo| %>
+            <% if photo %>
+              <%= cl_image_tag photo.key %>
             <% end %>
-      </div>
-      <div class="d-flex justify-content-center">
-        <%= link_to "Ajouter une photo", new_event_album_path(@event.id), class:"primary-orange-button" %>
-      </div>
+            <% end %>
+          <% end %>
+        </div>
+      <% else %>
+
+      <% end %>
     </div>
    <div class="right-container">
       <div class="gestion-card">
