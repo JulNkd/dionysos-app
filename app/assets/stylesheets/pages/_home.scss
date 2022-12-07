@@ -26,16 +26,21 @@
 
 .second-div-landing {
   background-color: #0D1B23;
-  padding: 0px 40px 0px 40px;
   color:white;
   height:400px;
   text-align: center;
   display: flex;
-  align-items: center;
+  flex-direction: column;
+  justify-content: center;
   .list-avantages{
     display:flex;
     margin-top: 30px;
+    justify-content: space-evenly;
   }
+}
+
+.avantage {
+  width: 300px;
 }
 
 .third-div-landing{
