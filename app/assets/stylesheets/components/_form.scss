@@ -4,7 +4,8 @@
   // -moz-background-size: cover;
   // -o-background-size: cover;
   background-size: cover;
-  height: 100vh;
+  min-height: 100vh;
+  padding-bottom: 4vh;
 }
 .title{
   text-align: left;
