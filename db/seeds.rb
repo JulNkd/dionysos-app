@@ -9,6 +9,7 @@
 Invitation.destroy_all
 Spending.destroy_all
 Budget.destroy_all
+Album.destroy_all
 Event.destroy_all
 User.destroy_all
 
