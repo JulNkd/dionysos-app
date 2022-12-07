@@ -1,7 +1,9 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>DionysosApp</title>
+    <title><%= meta_title %></title>
+    <meta name="description" content="<%= meta_description %>">
+    <%# <title>Dionysos, l'événementiel simple</title> %>
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
@@ -10,7 +12,9 @@
     <%= javascript_include_tag "application", "data-turbo-track": "reload", defer: true %>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
     <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
-
+    <link href="https://api.mapbox.com/mapbox-gl-js/v2.11.0/mapbox-gl.css" rel="stylesheet">
+    <script src="https://api.mapbox.com/mapbox-gl-js/v2.11.0/mapbox-gl.js"></script>
+    <%= favicon_link_tag "favicon.png", rel: "icon", type: "image/png" %>
 
   </head>
 
@@ -20,10 +24,11 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Barlow:wght@400;600;700&display=swap" rel="stylesheet">  </head>
   <body>
-  <%= render "shared/navbar" %>
-<%= render "shared/flashes" %>
-
-    <%= yield %>
-    <%= render "shared/footer" %>
+      <%= render "shared/navbar" %>
+    <div class="main-wrapper">
+      <%= render "shared/flashes" %>
+      <%= yield %>
+    </div>
+      <%= render "shared/footer" %>
   </body>
 </html>

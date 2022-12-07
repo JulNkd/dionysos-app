@@ -29,72 +29,117 @@
           </div>
         </div>
       </div>
+      <div class= "style"
+      data-controller="map"
+      data-map-marker-value="<%= @marker.to_json %>"
+      data-map-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>">
+      </div>
 
+      <% if @event.budget.present?%>
       <h2>Finances</h2>
       <div class="finance-div">
         <div class="budget-side">
-          <h5 class="--black-big">Budget total : <%= @event.budget.initial_budget %>€</h5>
-          <% if @event.budget.nil? %>
-            <%= link_to "Définir un budget", new_event_budget_path(@event), class:"primary-orange-button" %>
-          <% else %>
-            <%= link_to "Mettre à jour mon budget initial", edit_event_budget_path(@event), class:"primary-orange-button" %>
-          <br>
-          <br>
-          <% end %>
+          <div class="d-flex">
+          <div>
+            <i class="fa-solid fa-coins landing-icon icon-size"></i>
+          </div>
+          <div class="text-icon">
+            <h5 class="--black">Budget total : <%= @event.budget.initial_budget %>€</h5>
+            <%= link_to "Mettre à jour mon budget", edit_event_budget_path(@event), class:"primary-orange-button" %>
+          </div>
         </div>
+        <% else %>
+          <div class="finance-div">
+          <div class="budget-side d-none">
+              <h5></h5>
+            <br>
+            <br>
+        <% end %>
+        </div>
+        <% if @event.spendings.present? %>
         <div class="chart" data-controller= "collapse-spending">
           <div class="d-flex">
-            <h5 class="--black-big">Budget restant : <%= @event.budget.remaining_budget %>€</h5>
-            <button type="button" class="collapsible" data-action="click->collapse-spending#displayList" ><i class="fa-solid fa-caret-down"></i></button>
-          </div>
-          <div class="content" data-collapse-spending-target="list">
-            <ul class="list-group">
-              <% @event.spendings.each do |spending| %>
-              <li class="list-group-item">
-                <%= spending.category %> =
-                <%= spending.amount %>€
-                <%= @event.start_date.strftime("le %d/%m/%Y à %H:%M") %>
-              </li>
-              <% end %>
-            </ul>
+            <% if @event.budget.present?%>
+              <div class="d-flex">
+                <div>
+                  <i class="fa-solid fa-wallet landing-icon icon-size"></i>
+                </div>
+                <div class="text-icon flex-column">
+                  <div class="d-flex">
+                    <h5 class="--black">Budget restant : <%= @event.budget.remaining_budget %>€</h5>
+                    <button type="button" class="collapsible" data-action="click->collapse-spending#displayList" ><i class="fa-solid fa-caret-right arrow" data-collapse-spending-target="arrow"></i></button>
+                  </div>
+                  <div class="content" data-collapse-spending-target="list">
+                    <ul class="list-group">
+                      <% @event.spendings.each do |spending| %>
+                      <li class="list-group-item">
+                        <%= spending.category %> =
+                        <%= spending.amount %>€
+                        <%= @event.start_date.strftime("le %d/%m/%Y") %>
+                      </li>
+                      <% end %>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+            <% end %>
           </div>
         </div>
+        <% else %>
+        <div class="chart d-none" data-controller= "collapse-spending">
+          <div class="d-flex">
+          </div>
+        </div>
+        <% end %>
       </div>
-      <h2>A propos de cet événement</h2>
+      <h2>À propos de cet événement</h2>
       <p><%= @event.description %></p>
 
-      <h2>Album de l'événement</h2>
-      <div class="album-section">
-            <% @event.albums.each do |album| %>
-              <% album.photos.each_with_index do |photo, index| %>
-                <%= cl_image_tag photo.key %>
-              <% end %>
+      <% if @event.albums.present? %>
+        <h2>Album de l'événement</h2>
+        <div class="album-section">
+          <% @event.albums.each do |album| %>
+            <% album.photos.limit(3).each do |photo| %>
+            <% if photo %>
+              <%= cl_image_tag photo.key %>
             <% end %>
-      </div>
-    </div>
+            <% end %>
+          <% end %>
+        </div>
+      <% else %>
 
-    <div class="right-container">
+      <% end %>
+    </div>
+   <div class="right-container">
       <div class="gestion-card">
         <h2>Gestion de </br> l'événement</h2>
-        <p>Générale</p>
+        <p>Général</p>
         <%= link_to "Modifier l'événement", edit_event_path(@event.id), class:"large-light-orange-button" %>
         <%= link_to "Envoyer des invitations", new_event_invitation_path(@event), class:"large-orange-button" %>
         <%= link_to "Voir mes invités", event_invitations_path(@event), class:"large-grey-button" %>
 
         <p>Finances</p>
-        <%= link_to "Ajouter une dépense", new_event_spending_path(@event), class:"large-orange-button" %>
+        <% if @event.budget.present? %>
+          <%= link_to "Ajouter une dépense", new_event_spending_path(@event), class:"large-orange-button" %>
+        <% else %>
+          <%= link_to "Ajouter un budget", new_event_budget_path(@event), class:"large-orange-button" %>
+        <% end %>
         <p>Album</p>
-        <%= link_to "Ajouter une photo", new_event_album_path(@event.id), class:"large-orange-button" %>
-        <%= link_to "Voir l'album", photos_event_path(@event.id), class:"large-grey-button" %>
+        <% if @event.albums.present? %>
+          <%= link_to "Ajouter une photo", new_event_album_path(@event.id), class:"large-orange-button" %>
+          <%= link_to "Voir l'album", photos_event_path(@event.id), class:"large-grey-button" %>
+        <% else %>
+          <%= link_to "Créer un album", new_event_album_path(@event.id), class:"large-orange-button" %>
+        <% end %>
       </div>
     </div>
+
   </div>
 </div>
 
 <% if @invitation %>
-  <%= simple_form_for [@event, @invitation] do |f| %>
-    <%= f.input :status, label: 'Je participe' %>
-    <%= f.submit %>
-    <%= flash.now[:notice] = "#{@event.current_user} participe à l'évènement #{@event.title}." %>
+  <%= simple_form_for [@event, @invitation] do |f|%>
+  <%= f.input :status, label: 'Je participe' %>
+  <%= f.submit %>
   <% end %>
   <% end %>

@@ -1,13 +1,14 @@
 // Graphical variables
-@import "config/fonts";
 @import "config/colors";
 @import "config/images";
 @import "config/bootstrap_variables";
 
 // External libraries
 @import "bootstrap/scss/bootstrap";
+@import "config/fonts";
 @import "font-awesome";
 @import 'flatpickr/dist/flatpickr';
+@import "@mapbox/mapbox-gl-geocoder/dist/mapbox-gl-geocoder";
 
 // Your CSS partials
 @import "components/index";
@@ -16,3 +17,20 @@
 @import "pages/photos";
 @import "pages/index_invitations";
 
+abbr {
+  display: none;
+}
+
+.form-check-input:checked {
+  background-color: #FF5D29;
+  border-color: #b0b0b0;
+  outline: none !important;
+}
+
+.main-wrapper {
+  min-height: 80vh;
+}
+
+.mapboxgl-marker path {
+  fill:  #FF5D29;
+}
