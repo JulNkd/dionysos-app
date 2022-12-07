@@ -11,7 +11,7 @@ class SpendingsController < ApplicationController
     @spending.event = @event
     # seulement si event.budget.budget_restant > spendings params
     if @spending.save
-      redirect_to event_spendings_path, status: :see_other
+      redirect_to event_path(@event), status: :see_other
       @budget.remaining_budget -= @spending.amount
       @budget.save!
     else

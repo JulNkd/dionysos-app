@@ -39,7 +39,7 @@
       <h2>Finances</h2>
       <div class="finance-div">
         <div class="budget-side">
-          <div class="d-flex align-items-center">
+          <div class="d-flex">
           <div>
             <i class="fa-solid fa-coins landing-icon icon-size"></i>
           </div>
@@ -137,10 +137,9 @@
   </div>
 </div>
 
-<%# <% if @invitation %>
-  <%# <%= simple_form_for [@event, @invitation] do |f| %>
-    <%# <%= f.input :status, label: 'Je participe' %>
-    <%# <%= f.submit %>
-    <%# <%= flash[:notice] = "#{@event.current_user} participe à l'évènement #{@event.title}." %>
-  <%# <% end %>
-  <%# <% end %>
+<% if @invitation %>
+  <%= simple_form_for [@event, @invitation] do |f|%>
+  <%= f.input :status, label: 'Je participe' %>
+  <%= f.submit %>
+  <% end %>
+  <% end %>
