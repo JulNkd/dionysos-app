@@ -1,13 +1,13 @@
-
 <div class="container">
-  <h1>L'album de <%= @event.title %> </h1>
-<div class="row">
-  <div class="two-columns">
-    <% @albums.each do |album| %>
-      <% album.photos.each_with_index do |photo, index| %>
-          <%= cl_image_tag photo.key %>
+  <div class="title-album"><h1>Album "<%= @event.title %>"</h1>
+  <%= link_to "Retourner à l'événement", event_path(@event), class:"primary-orange-button" %></div>
+  <div class="row">
+    <div class="two-columns">
+      <% @albums.each do |album| %>
+        <% album.photos.each_with_index do |photo, index| %>
+            <%= cl_image_tag photo.key %>
+        <% end %>
       <% end %>
-    <% end %>
+    </div>
   </div>
-</div>
 </div>
