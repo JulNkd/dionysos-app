@@ -13,7 +13,7 @@
     }
   }
   .first-div-images {
-    margin-top: 80px;
+    margin-top: 60px;
   }
   img{
     height: 350px;
@@ -51,6 +51,7 @@
     width: 580px;
     object-fit: cover;
     border-radius: 8px;
+    margin-right: 100px;
   }
   .third-div-landing-img{
     width:100%;
@@ -68,20 +69,23 @@
   justify-content: space-between;
   align-items: center;
   margin-top: 50px;
+
   img{
     height: 400px;
     border-radius: 8px;
+    background-color: linear-gradient(rgb(0, 0, 0), rgba(0,0,0,0.3));
   }
   .container-img-landing{
     position:relative;
     text-align:center;
     color:white;
-      .landing-text-img {
-      position: absolute;
-      top: 8px;
-      left: 16px;
-    }
   }
+}
+
+.landing-text-img {
+position: absolute;
+top: 8px;
+left: 16px;
 }
 
 .container-new{
