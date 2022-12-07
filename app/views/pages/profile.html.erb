@@ -1,58 +1,136 @@
-<div class="container-new">
-  <div>
-    <h1>Evénements</h1>
+<div class="container">
+  <div class="d-flex justify-content-between mt-5 align-items-end mb-3">
+    <div>
+      <h2>Mes événements</h2>
+      <div class= "search-bar"><%= form_with url: profile_path, method: :get do %>
+      <%= text_field_tag :query,
+      params[:query],
+      class: "search-input",
+      placeholder: "Rechercher un événement"%>
+      <button class="main-btn" type="submit">
+      <i class="fa-solid fa-magnifying-glass"></i>
+      </button>
+      <% end %>
+    </div>
   </div>
-  <div class="d-flex justify-content-between">
-    <h3>Mes événements</h3>
-    <%= link_to "Créer un événement", new_event_path, class:"primary-orange-button" %>
+    <div class="d-flex align-items-center"><%= link_to "Créer un événement", new_event_path, class:"primary-orange-button" %>
+    </div>
   </div>
   <table class="w-100">
     <thead>
       <tr class="column-names">
-        <th scope="col">Evénement</th>
-        <th scope="col">Invités</th>
-        <th scope="col">Budget</th>
-        <th scope="col">Statut</th>
+        <th scope="col" class= "border-event-left"><span class="table-titles">Evénements</span></th>
+        <th scope="col" class="text-center">Invités</th>
+        <th scope="col" class="text-center">Budget</th>
+        <th scope="col" class="border-event-right text-center">Statut</th>
       </tr>
     </thead>
-    <tbody>
-    <% @events.each do |event| %>
-      <tr>
-        <td scope="row" class="d-flex">
+    <tbody class="event-content-profile">
+      <% @events.each do |event| %>
+      <tr class= "row-border">
+        <td scope="row" class="d-flex row-table m-3">
           <div>
             <% if event.photo.attached? %>
-              <%= cl_image_tag event.photo.key, width: 90, height: 90, crop: :fill, class:"rounded" %>
+              <%= cl_image_tag event.photo.key, width: 125, height: 125, crop: :fill, radius: 8 %>
             <% else %>
             <% end %>
           </div>
-          <div class="table-event-name">
-            <%= event.title %>
-            <br>
-            <%= event.start_date.strftime("%d" + "." + "%m" + "." +"%Y") %>
-            <br>
-            <%= link_to "Gérer l'événement", event_path(event) %>
+          <div class="text-event">
+            <div class="table-event-name pl-2">
+              <h5 class="event-title mt-3"><%= event.title %></h5>
+              <p class="event-date"><%= event.start_date.strftime("%d" + "." + "%m" + "." +"%Y") %></p>
+            </div>
+            <div>
+              <%= link_to event_path(event) do %>
+                <i class="fa-solid fa-eye icone-event"></i>
+              <% end %>
+            </div>
           </div>
         </td>
-        <td>
+        <td class="text-center">
           <% if event.invitations.present? %>
             <%= event.invitations.length %>
           <% else %>
             <%= "-" %>
           <% end %>
         </td>
-        <td>
+        <td class="text-center">
           <% if event.budget.present?%>
-            <%= event.budget.initial_budget %>
+            <%= event.budget.initial_budget %>€
           <% else %>
             <%= "-" %>
+          <% end %>
+        </td>
+        <td class="text-center">
+          <% if DateTime.now >= event.start_date %>
+            <%= "Passé" %>
+          <% else %>
+            <%= "A venir" %>
           <% end %>
         </td>
       </tr>
       <% end %>
     </tbody>
   </table>
-  <h2>Mes invitations</h2>
-  <%= @invitations.each do |invitation| %>
-    <%= invitation.event.title %>
-  <% end %>
+  <div>
+    <h2 class="mt-5">Invitations reçues</h2>
+    <div class= "search-bar mb-3"><%= form_with url: profile_path, method: :get do %>
+    <%= text_field_tag :query,
+    params[:query],
+    class: "search-input",
+    placeholder: "Rechercher un événement"%>
+    <button class="main-btn" type="submit">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    </button>
+    <% end %>
+  </div>
+  <table class="w-100 mb-5">
+    <thead>
+      <tr class="column-names">
+        <th scope="col" class= "border-event-left"><span class="table-titles">Evénements</span></th>
+        <th scope="col" class="text-center">Invités</th>
+        <th scope="col" class="border-event-right text-center">Statut</th>
+      </tr>
+    </thead>
+    <tbody class="event-content-profile">
+      <% @invitations.each do |invitation| %>
+        <tr class= "row-border">
+          <td scope="row" class="d-flex row-table m-3">
+            <div>
+              <% if invitation.event.photo.attached? %>
+                <%= cl_image_tag invitation.event.photo.key, width: 125, height: 125, crop: :fill, radius: 8 %>
+              <% else %>
+              <% end %>
+            </div>
+            <div class="text-event">
+              <div class="table-event-name pl-2">
+                <h5 class="event-title mt-3"><%= invitation.event.title %></h5>
+                <p class="event-date"><%= invitation.event.start_date.strftime("%d" + "." + "%m" + "." +"%Y") %></p>
+              </div>
+              <div>
+                <%= link_to event_path(invitation.event) do %>
+                  <i class="fa-solid fa-eye icone-event"></i>
+                <% end %>
+              </div>
+            </div>
+          </td>
+          <td class="text-center">
+            <% if invitation.event.invitations.present? %>
+              <%= invitation.event.invitations.length %>
+            <% else %>
+              <%= "-" %>
+            <% end %>
+          </td>
+          <td class="text-center">
+            <% if DateTime.now >= invitation.event.start_date %>
+
+              <%= "Passé" %>
+            <% else %>
+              <%= "A venir" %>
+            <% end %>
+          </td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
 </div>

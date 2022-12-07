@@ -5,15 +5,14 @@
   border-radius: 4px;
   font-family: 'Barlow';
   font-weight: 600;
-  transition-duration: 0.3s;
-  font-size: 20px;
   padding: 12px 20px;
+  transition: 0.3s ease-out;
+  border: none;
 }
 .primary-orange-button:hover {
-  padding:16px 24px;
+  transition: 0.3s ease-in;
+  background-color: #ff9774;
   color: white;
-  transition-timing-function: ease-in-out;
-  transition-duration: 0.3s;
 }
 
 
@@ -29,9 +28,12 @@
   display: block;
   text-align: center;
   margin-bottom: 5px;
+  transition: 0.3s ease-out;
 }
 .large-orange-button:hover {
+  background-color: #ff9774;
   color: white;
+  transition: 0.3s ease-in;
 }
 
 
@@ -47,9 +49,12 @@
   display: block;
   text-align: center;
   margin-bottom: 5px;
+  transition: 0.3s ease-out;
 }
 .large-light-orange-button:hover {
   color: #FF5D29;
+  background-color: #fff0eb;
+  transition: 0.3s ease-in;
 }
 
 
@@ -105,9 +110,12 @@
   width: 100%;
   display: block;
   margin-bottom: 5px;
+  transition: 0.3s ease-out;
 }
 .large-grey-button:hover {
   color: #252525;
+  background-color: #f5f5f5;
+  transition: 0.3s ease-in;
 }
 
 .button-bottom-landing{

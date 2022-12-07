@@ -5,7 +5,7 @@ ruby "3.1.2"
 
 gem "cloudinary"
 
-gem 'twilio-ruby', "~> 5.6"
+gem 'twilio-ruby'
 #search gem
 gem "pg_search"
 
@@ -50,6 +50,9 @@ gem "bootsnap", require: false
 
 # Use Sass to process CSS
 gem "sassc-rails"
+
+gem 'open-uri'
+
 
 # geocoding
 gem "geocoder"

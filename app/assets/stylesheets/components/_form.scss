@@ -1,3 +1,12 @@
+.background {
+  background: url("Topographic.png") no-repeat center center fixed;
+  // -webkit-background-size: cover;
+  // -moz-background-size: cover;
+  // -o-background-size: cover;
+  background-size: cover;
+  min-height: 100vh;
+  padding-bottom: 4vh;
+}
 .title{
   text-align: left;
   justify-content: left;
@@ -6,10 +15,10 @@
 
 .form-container {
   margin: auto;
-  margin-top: 100px;
-  margin-bottom: 100px;
+  // margin-top: 100px;
+  // margin-bottom: 100px;
+  padding-bottom: 18px;
   width: 600px;
-  height: 800px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -25,35 +34,26 @@
   display: flex;
 }
 
-.form-container-spending {
-  margin: auto;
-  padding: 32px;
-  width: 600px;
-  margin-top: 100px;
-  margin-bottom: 100px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-direction: column;
-  background: #FFFFFF;
-  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
-  border-radius: 8px;
-  outline: none !important;
-}
+// .form-container-spending {
+//   margin: auto;
+//   padding: 32px;
+//   width: 600px;
+//   // margin-top: 100px;
+//   // margin-bottom: 100px;
+//   display: flex;
+//   align-items: center;
+//   justify-content: center;
+//   flex-direction: column;
+//   background: #FFFFFF;
+//   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+//   border-radius: 8px;
+//   outline: none !important;
+// }
 
 #new_spending {
   width: 80%;
 }
 
-.primary-orange-button-forms {
-  background-color: #FF5D29;
-  text-decoration: none;
-  color: white;
-  border-radius: 8px;
-  font-family: 'Barlow';
-  font-weight: 600;
-  transition-duration: 0.4s;
-  font-size: 20px;
-  padding: 12px 20px;
-  border: none;
+::placeholder {
+  color: #b0b0b0;
 }
