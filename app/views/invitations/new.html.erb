@@ -1,6 +1,6 @@
 <div class= "background">
 <br><br>
-  <div class="form-container-spending">
+  <div class="form-container">
     <h2 class="title">Inviter des participants</h2>
     <%= simple_form_for [@event, @invitation] do |f| %>
         <%= f.input :user, label: "", as: :check_boxes, multiple: :true, collection: @users, label_method: :full_name %>
