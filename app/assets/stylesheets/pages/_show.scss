@@ -104,12 +104,12 @@ button {
 .album-section {
   display: flex;
   flex-wrap: wrap;
-  object-fit: cover;
   img {
     width: 240px;
     height: 150px;
     margin: 4px;
     border-radius: 6px;
+    object-fit: cover;
   }
 }
 
