@@ -73,7 +73,8 @@
                     <ul class="list-group">
                       <% @event.spendings.each do |spending| %>
                       <li class="list-group-item">
-                        <%= spending.category %> =
+                        <strong> <%= spending.category %> </strong>
+                        </br>
                         <%= spending.amount %>€
                         <%= @event.start_date.strftime("le %d/%m/%Y") %>
                       </li>
@@ -131,6 +132,8 @@
         <% else %>
           <%= link_to "Créer un album", new_event_album_path(@event.id), class:"large-orange-button" %>
         <% end %>
+        <p>Cagnotte</p>
+        <%= link_to "Participer à la cagnotte", new_event_album_path(@event.id), class:"large-orange-button" %>
       </div>
     </div>
 
