@@ -106,12 +106,6 @@ birthday_joy = Event.new(start_date: DateTime.new(2022,4,28,18,0,0),
                         birthday_joy.photo.attach(io: file_birthday_joy, filename: "nes.png", content_type: "image/png")
 birthday_joy.save!
 
-invitation = Invitation.new(user: joy,
-                            event: birthday_julien,
-                            status: true,
-                            partner: true)
-invitation.save!
-
 invitation_second = Invitation.new(user: julien,
   event: birthday_joy,
   status: true,
@@ -123,21 +117,3 @@ budget_first = Budget.new(initial_budget: 2000,
                           remaining_budget: 2000,
                           event: birthday_julien)
 budget_first.save!
-
-spending_one = Spending.new(amount: 300,
-                        category: "Boissons",
-                        date: Date.new(2022, 6, 5),
-                        event: birthday_julien)
-spending_one.save!
-
-spending_two = Spending.new(amount: 500,
-  category: "DJ",
-  date: Date.new(2022, 6, 20),
-  event: birthday_julien)
-spending_two.save!
-
-spending_three = Spending.new(amount: 1000,
-  category: "Salle",
-  date: Date.new(2022, 8, 20),
-  event: birthday_julien)
-spending_three.save!
