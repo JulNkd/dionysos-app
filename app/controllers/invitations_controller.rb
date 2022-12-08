@@ -51,7 +51,8 @@ class InvitationsController < ApplicationController
         @user = User.find(selected)
         @invitation.user = @user
         @invitation.event = @event
-        if @invitation.save!
+        if @user.phone_number.present?
+          @invitation.save!
           send_sms_to_contact
         end
       end

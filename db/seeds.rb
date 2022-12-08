@@ -77,7 +77,7 @@ antoine = User.new(first_name: "Antoine",
                     last_name: "Mauriac",
                     password: "azerty",
                     email: "antoine.mauriac@gmail.com",
-                    phone_number: "626803401",
+                    phone_number: "@",
                     address: "21 rue Haxo Marseille",
                     admin: true)
                     file_antoine = URI.open("https://ca.slack-edge.com/T02NE0241-U0464CHFCG1-9f9c5616aa4e-512")
@@ -89,7 +89,6 @@ antoine.save!
           last_name: Faker::Name.last_name,
           password: "azerty",
           email: Faker::Internet.email,
-          phone_number: Faker::PhoneNumber.cell_phone,
           address: "21 rue Haxo Marseille",
           admin: true)
   user.save!
