@@ -33,11 +33,10 @@ class InvitationsController < ApplicationController
     auth_token = ENV['auth_token']
 
     @client = Twilio::REST::Client.new(account_sid, auth_token)
-
     @client.messages.create(
       from: ENV["TWILIO_PHONE_NUMBER"],
       to: "+33#{@user.phone_number}",
-      body: "https://www.dionysos.click/events/#{@invitation.event.id}"
+      body: "#{@invitation.event.user.first_name} vous invite à l'événement : #{@invitation.event.title} le #{@invitation.event.start_date.strftime("%d %B %Y")} ! Cliquez-ici pour participer https://www.dionysos.click/events/#{@invitation.event.id}"
     )
   end
 
