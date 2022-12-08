@@ -85,13 +85,14 @@ antoine = User.new(first_name: "Antoine",
 antoine.save!
 
 10.times do
-  User.new(first_name: Faker::Name.first_name,
+  user = User.new(first_name: Faker::Name.first_name,
           last_name: Faker::Name.last_name,
           password: "azerty",
           email: Faker::Internet.email,
           phone_number: Faker::PhoneNumber.cell_phone,
           address: "21 rue Haxo Marseille",
           admin: true)
+  user.save!
 end
 
 birthday_julien = Event.new(start_date: DateTime.new(2022,5,9,18,0,0),
