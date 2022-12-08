@@ -45,7 +45,7 @@
   </div>
 
   <div class="all-invited">
-      <% @invitations.each do |invitation| %>
+      <% @event.invitations.each do |invitation| %>
         <%# <%= cl_image_tag invitation.user.photo.key, gravity: :faces, crop: :thumb, class: "avatar-big-index" %>
     <div class="invited-avatars">
       <% if invitation.user.photo.attached? %>
