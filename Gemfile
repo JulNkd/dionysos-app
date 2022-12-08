@@ -53,7 +53,6 @@ gem "sassc-rails"
 
 gem 'open-uri'
 
-
 # geocoding
 gem "geocoder"
 
