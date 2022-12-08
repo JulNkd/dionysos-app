@@ -108,7 +108,7 @@ wedding_julien = Event.new(start_date: DateTime.new(2022,9,10,15,0,0),
 
                         « Dans nos cœurs notre amour rime déjà avec toujours. Et aujourd’hui, nous voulons qu’il s’inscrive dans l’histoire de la République.
 
-                        Notre mariage civil aura lieu le 13 juillet 2019 en la mairie de Genteville à 16 heures.
+                        Notre mariage civil aura lieu le 10 septembre 2022 à la mairie de Meynes à 15 heures.
 
                         Nous vous invitons à être les témoins de notre amour et de notre union.
 
