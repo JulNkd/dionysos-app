@@ -95,60 +95,70 @@ antoine.save!
   user.save!
 end
 
-birthday_julien = Event.new(start_date: DateTime.new(2022,5,9,18,0,0),
-                        end_date: DateTime.new(2022,5,10,9,0,0),
-                        category: "Anniversaire",
-                        description: "Le Lorem Ipsum est simplement du faux texte employé dans la composition et la mise en page avant impression. Le Lorem Ipsum est le faux texte standard de l'imprimerie depuis les années 1500, quand un imprimeur anonyme assembla ensemble des morceaux de texte pour réaliser un livre spécimen de polices de texte. Il n'a pas fait que survivre cinq siècles, mais s'est aussi adapté à la bureautique informatique, sans que son contenu n'en soit modifié. Il a été popularisé dans les années 1960 grâce à la vente de feuilles Letraset contenant des passages du Lorem Ipsum, et, plus récemment, par son inclusion dans des applications de mise en page de texte, comme Aldus PageMaker.",
-                        address: "Palais du pharo Marseille",
-                        title: "30 ans de Julien",
-                        user_id: julien.id)
-                        file_birthday_julien = URI.open("https://images.pexels.com/photos/1729808/pexels-photo-1729808.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2")
-                        birthday_julien.photo.attach(io: file_birthday_julien, filename: "nes.png", content_type: "image/png")
-birthday_julien.save!
+wedding_julien = Event.new(start_date: DateTime.new(2022,9,10,15,0,0),
+                        end_date: DateTime.new(2022,9,11,9,0,0),
+                        category: "Mariage",
+                        description: "C’est officiel on se marie !
 
-birthday_joy = Event.new(start_date: DateTime.new(2022,4,28,18,0,0),
-                        end_date: DateTime.new(2022,4,29,9,0,0),
+                        Rejoignez-nous à la Marie du 2ème arrondissement de Lyon à 15 heures 45 pour fêter cet événement majeur.
+
+                        Un vin d’honneur sera servi au château des Vignes à partir de 17 heures 30.
+
+                        S’ensuivront un repas et une soirée de folie pour célébrer les tout jeunes mariés. »
+
+                        « Dans nos cœurs notre amour rime déjà avec toujours. Et aujourd’hui, nous voulons qu’il s’inscrive dans l’histoire de la République.
+
+                        Notre mariage civil aura lieu le 13 juillet 2019 en la mairie de Genteville à 16 heures.
+
+                        Nous vous invitons à être les témoins de notre amour et de notre union.
+
+                        À la suite de la cérémonie nous nous dirigerons vers le domaine de Sotil pour poursuivre la fête jusqu’au bouquet final.",
+                        address: "Chateau saint louis la perdrix Bellegarde",
+                        title: "Mariage de Léa et Julien",
+                        user_id: julien.id)
+                        file_birthday_julien = URI.open("https://res.cloudinary.com/dct6y4tya/image/upload/v1670507704/Le%CC%81aetJulien-galerie-_ponthus.nancy-460_m52qnd.jpg")
+                        wedding_julien.photo.attach(io: file_birthday_julien, filename: "nes.png", content_type: "image/png")
+wedding_julien.save!
+
+birthday_joy = Event.new(start_date: DateTime.new(2023,4,28,18,0,0),
+                        end_date: DateTime.new(2023,4,29,9,0,0),
                         category: "Anniversaire",
                         description: "Le Lorem Ipsum est simplement du faux texte employé dans la composition et la mise en page avant impression. Le Lorem Ipsum est le faux texte standard de l'imprimerie depuis les années 1500, quand un imprimeur anonyme assembla ensemble des morceaux de texte pour réaliser un livre spécimen de polices de texte. Il n'a pas fait que survivre cinq siècles, mais s'est aussi adapté à la bureautique informatique, sans que son contenu n'en soit modifié. Il a été popularisé dans les années 1960 grâce à la vente de feuilles Letraset contenant des passages du Lorem Ipsum, et, plus récemment, par son inclusion dans des applications de mise en page de texte, comme Aldus PageMaker.",
                         address: "Tour Eiffel Paris",
                         title: "30 ans de Joy",
                         user_id: joy.id)
-                        file_birthday_joy = URI.open("https://images.pexels.com/photos/1359294/pexels-photo-1359294.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2")
+                        file_birthday_joy = URI.open("https://res.cloudinary.com/dct6y4tya/image/upload/v1670508187/dominik-kempf-9V2g8W16F50-unsplash_xneesz.jpg")
                         birthday_joy.photo.attach(io: file_birthday_joy, filename: "nes.png", content_type: "image/png")
 birthday_joy.save!
 
-invitation = Invitation.new(user: joy,
-                            event: birthday_julien,
-                            status: true,
-                            partner: true)
-invitation.save!
-
-invitation_second = Invitation.new(user: julien,
+invitation = Invitation.new(user: julien,
   event: birthday_joy,
   status: true,
   partner: true,
   comment: "J'ai trop hâte d'être invité à ton mariage Joy xD ^^")
-invitation_second.save!
+invitation.save!
 
-budget_first = Budget.new(initial_budget: 2000,
-                          remaining_budget: 2000,
-                          event: birthday_julien)
+puts "invit anniv joy"
+38.times do
+  invitation = Invitation.new(user: adrien,
+    event: birthday_joy,
+    status: true,
+    partner: true,
+    comment: "J'ai trop hâte d'être invité à ton mariage Joy xD ^^")
+  invitation.save!
+end
+
+puts "invit wedding"
+150.times do
+  invitation_wedding = Invitation.new(user: joy,
+    event: wedding_julien,
+    status: true,
+    partner: true,
+    comment: "")
+  invitation_wedding.save!
+end
+
+budget_first = Budget.new(initial_budget: 20000,
+                          remaining_budget: 20000,
+                          event: wedding_julien)
 budget_first.save!
-
-spending_one = Spending.new(amount: 300,
-                        category: "Boissons",
-                        date: Date.new(2022, 6, 5),
-                        event: birthday_julien)
-spending_one.save!
-
-spending_two = Spending.new(amount: 500,
-  category: "DJ",
-  date: Date.new(2022, 6, 20),
-  event: birthday_julien)
-spending_two.save!
-
-spending_three = Spending.new(amount: 1000,
-  category: "Salle",
-  date: Date.new(2022, 8, 20),
-  event: birthday_julien)
-spending_three.save!
